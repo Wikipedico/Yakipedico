@@ -22,4 +22,3 @@ gamemode adventure @a
 scoreboard objectives setdisplay sidebar.team.blue info
 
 # 鬼さんお着替え
-replaceitem entity @a[]
