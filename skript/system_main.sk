@@ -1,0 +1,9 @@
+on damage:
+    if attacker is {oni::*}:
+        if vistim is {nige::*}:
+            touchedByOni(victim)
+            touchToNige(attacker)
+    if attacker is {nige::*}
+        if victim is {oni::*}
+            touchedByNige(victim)
+            touchToOni(attacker)

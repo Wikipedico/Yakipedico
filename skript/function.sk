@@ -1,0 +1,49 @@
+function gameStart():
+    set {timer} to true
+    set {surviver}  to online player count
+    reduce {surviver} by amount of {oni::*}
+    loop all players:
+        set {status.%loop-player%} to "alive"
+    while {timer} is true:
+        reduce {time} by 1
+        if {time} is 0:
+            winOni()
+            set {timer} is false
+        wait 1 second
+
+
+function gameEnd():
+    set {timer} to false
+
+
+function huriwake():
+    loop all players:
+        if loop-player is standing on golden block
+            add player to {tyuusen::*}
+    if {tyuusen::*} is set:
+        add random 1 of {tyuusen::*} to {oni::*}
+        add all player to {nige::*}
+        remove {oni::*} from {nige::*}
+        set {huriwake} to true
+        broadcast "[システム] 今回の鬼は%{oni::*}%です"
+    else:
+        broadcast "[Error] 抽選対象がいません"
+
+
+function touchedByOni(p: player):
+    set {status.%{_p}%} to "death"
+    teleport {_p} to {koumori}
+    reduce {surviver} by 1
+    if {surviver} is 0:
+        winOni()
+
+
+function hukkatu(p: player):
+    set {status.%{_p}%} to "alive"
+    teleport {_p} to {respawnNige}
+    add 1 to {surviver}
+
+
+function winOni():
+    broadcast "[システム] "
+    gameEnd()

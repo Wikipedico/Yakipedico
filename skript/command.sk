@@ -1,18 +1,36 @@
 command /start:
+    permission: skript.admin
+    permission message:Admin専用コマンドです。
     trigger:
-        execute console command "function ibuibu:game_start"
+        if {huriwake} is true:
+            gameStart()
+        else:
+            message "[Error] 役振りが完了していません" to player
 
 command /zikan <number>:
+    permission: skript.admin
+    permission message:Admin専用コマンドです。
     trigger:
-        execute console command "scoreboard players timer timer %arg-1%"
-        message "[システム] 残り時間%arg-1%をに設定しました" to player
+        set {time} to arg-1
 
 command /end:
+    permission: skript.admin
+    permission message:Admin専用コマンドです。
     trigger:
-        execute console command "function ibuibu:game_end"
+        gameEnd()
 
 command /huriwake:
+    permission: skript.admin
+    permission message:Admin専用コマンドです。
     trigger:
-        execute console command "scoreboard players set nokorininnzuu nokorininnzuu %online player count%"
-        execute console command "function ibuibu:huriwake"
-        message "[システム] 鬼を振り分けました" to player
+        huriwake()
+
+command /setloca <text>:
+    trigger:
+        set {%arg-1%} to location of target block
+
+command /joinCount:
+    permission: skript.admin
+    permission message:Admin専用コマンドです。
+    trigger:
+        message "&2>JoinCount &r現在の累計接続人数は &6%{joinCount}% &r人です"

@@ -1,0 +1,21 @@
+on skript load:
+    set {status} to 0
+    set {timer} to false
+    set {time} to 900
+    set {huriwake} to false
+    reset {oni::*}
+    reset {nige::*}
+    reset {tyuusen::*}
+
+
+on first join:
+    set the join message to "&6>First Join! &e%player% joined the game"
+    add 1 to {joinCount}
+
+
+on join:
+    set the join message to "&e%player% joined the game"
+
+
+on quit:
+    set the quit message to "&e%player% left the game"
