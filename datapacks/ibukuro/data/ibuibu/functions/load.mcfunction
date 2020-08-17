@@ -11,6 +11,9 @@ gamemode adventure @a
 
 
 # スコア定義と初期化
+scoreboard objectives add lobby dummy
+scoreboard players set lobby lobby 0
+
 scoreboard objectives add nokorininnzuu dummy
 scoreboard players set nokorininnzuu nokorininnzuu 0
 
@@ -41,17 +44,19 @@ scoreboard objectives add timer_20 dummy
 scoreboard players set timer_20 tiemr_20 20
 
 
-# タグの追加
-team add oni
-team add nige
+# チーム消す
+team remove nige
+team remove oni
 
 
 # チームの追加と設定
+team add oni
 team modify oni nametagVisibility hideForOtherTeams
 team modify oni color dark_red
 team modify oni collisionRule never
 team modify oni friendlyFire false
 
+team add nige
 team modify nige nametagVisibility hideForOtherTeams
 team modify nige color blue
 team modify nige collisionRule never
