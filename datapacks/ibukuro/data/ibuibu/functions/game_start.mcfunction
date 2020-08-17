@@ -13,7 +13,7 @@ effect clear @a
 
 # TP
 tp @a[team=nige] 128 100 -209
-tp @a[team=oni] 0 0 0
+tp @a[tag=oni] @e[type=armor_stand,tag=tp_oni,sort=random,limit=1]
 
 # サイドバー表示
 scoreboard objectives setdisplay sidebar.team.blue info
