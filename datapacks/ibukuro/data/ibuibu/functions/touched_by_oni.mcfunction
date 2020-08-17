@@ -4,7 +4,7 @@
 
 # 逃げがタッチされたら
 execute if entity @s[nbt=!{SelectedItem:{id:"minecraft:totem_of_undying"}}] run clear @s
-execute if entity @s[nbt=!{SelectedItem:{id:"minecraft:totem_of_undying"}}] run tp @s 123 102 -144
+execute if entity @s[nbt=!{SelectedItem:{id:"minecraft:totem_of_undying"}}] run tp @s 137 35 -126
 execute if entity @s[nbt=!{SelectedItem:{id:"minecraft:totem_of_undying"}}] run tag @s remove ikiru
 
 # [名前]が捕まりましたって出るやつ

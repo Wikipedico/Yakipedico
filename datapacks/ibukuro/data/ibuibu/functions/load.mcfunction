@@ -53,7 +53,7 @@ team modify oni collisionRule never
 team modify oni friendlyFire false
 
 team modify nige nametagVisibility hideForOtherTeams
-
+team modify nige color blue
 team modify nige collisionRule never
 team modify nige friendlyFire false
 team modify nige seeFriendlyInvisibles true

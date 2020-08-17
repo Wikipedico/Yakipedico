@@ -15,5 +15,11 @@ effect clear @a
 tp @a[team=nige] 128 100 -209
 tp @a[tag=oni] @e[type=armor_stand,tag=tp_oni,sort=random,limit=1]
 
+# アドベンチャー
+gamemode adventure @a
+
 # サイドバー表示
 scoreboard objectives setdisplay sidebar.team.blue info
+
+# 鬼さんお着替え
+replaceitem entity @a[]
