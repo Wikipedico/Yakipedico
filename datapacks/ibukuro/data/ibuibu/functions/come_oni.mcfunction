@@ -12,3 +12,6 @@ tag @s add oni
 
 # チーム切り替え
 team join oni @s
+
+# 残り人数ー1
+scoreboard players remove nokorininnzuu nokorininnzuu 1

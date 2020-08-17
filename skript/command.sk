@@ -1,0 +1,18 @@
+command /start:
+    trigger:
+        execute console command "function ibuibu:game_start"
+
+command /zikan <number>:
+    trigger:
+        execute console command "scoreboard players timer timer %arg-1%"
+        message "[システム] 残り時間%arg-1%をに設定しました" to player
+
+command /end:
+    trigger:
+        execute console command "function ibuibu:game_end"
+
+command /huriwake:
+    trigger:
+        execute console command "scoreboard players set nokorininnzuu nokorininnzuu %online player's count%"
+        execute console command "function ibuibu:huriwake"
+        message "[システム] 鬼を振り分けました" to player
