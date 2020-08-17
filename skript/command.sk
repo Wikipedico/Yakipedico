@@ -13,6 +13,6 @@ command /end:
 
 command /huriwake:
     trigger:
-        execute console command "scoreboard players set nokorininnzuu nokorininnzuu %online player's count%"
+        execute console command "scoreboard players set nokorininnzuu nokorininnzuu %online player count%"
         execute console command "function ibuibu:huriwake"
         message "[システム] 鬼を振り分けました" to player
