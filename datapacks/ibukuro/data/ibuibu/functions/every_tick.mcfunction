@@ -3,7 +3,6 @@
 # ====================================================================================================================================================================================
 
 #timer
-
 execute if score lobby lobby matches 1 run function ibuibu:timer
 
 #ロビー
@@ -16,9 +15,24 @@ execute if entity @a[scores={kamado=1}] run scoreboard players add kamado kamado
 execute if entity @a[scores={kamado=1}] run function ibuibu:kamado_kaisuu
 execute as @a[scores={kamado=1}] run scoreboard players set @s kamado 0
 
-#
+# 生存者全滅で鬼の勝利
 execute unless entity @a[tag=ikiru] run function ibuibu:win_oni
 
+# サイドバー情報更新
+scoreboard players operation nokorininnzuu nokorininnzuu = info 残り人数
+scoreboard players operation timer timer = info 残り時間
+scoreboard players operation kamado_kaisuu kamado_kaisuu = info トーテム
+
+
+
+
+
+
+
+
+
+
+# 脱出チェスト関係
 replaceitem block 128 100 -207 container.0 minecraft:gray_stained_glass_pane
 replaceitem block 128 100 -207 container.1 minecraft:gray_stained_glass_pane
 replaceitem block 128 100 -207 container.2 minecraft:gray_stained_glass_pane
@@ -50,7 +64,3 @@ replaceitem block 128 100 -207 container.26 minecraft:gray_stained_glass_pane
 clear @a gray_stained_glass_pane
 
 execute if block 128 100 -207 minecraft:chest[facing=south,type=single,waterlogged=false]{Items:[{Slot:0b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:1b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:2b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:3b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:4b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:5b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:6b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:7b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:8b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:9b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:10b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:11b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:12b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:13b,id:"minecraft:diamond",Count:1b},{Slot:14b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:15b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:16b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:17b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:18b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:19b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:20b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:21b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:22b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:23b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:24b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:25b,id:"minecraft:gray_stained_glass_pane",Count:1b},{Slot:26b,id:"minecraft:gray_stained_glass_pane",Count:1b}]} run function ibuibu:game_end
-
-scoreboard players operation nokorininnzuu nokorininnzuu = info 残り人数
-scoreboard players operation timer timer = info 残り時間
-scoreboard players operation kamado_kaisuu kamado_kaisuu = info トーテム

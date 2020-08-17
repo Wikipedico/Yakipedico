@@ -2,11 +2,13 @@
 # リロード時に読み込み
 # ====================================================================================================================================================================================
 
-#
+# TP
 tp @a 146 103 -131
+
 
 # とりまアドベ
 gamemode adventure @a
+
 
 # スコア定義と初期化
 scoreboard objectives add nokorininnzuu dummy
@@ -38,9 +40,11 @@ scoreboard players reset @a tiemr_display
 scoreboard objectives add timer_20 dummy
 scoreboard players set timer_20 tiemr_20 20
 
+
 # タグの追加
 team add oni
 team add nige
+
 
 # チームの追加と設定
 team modify oni nametagVisibility hideForOtherTeams
