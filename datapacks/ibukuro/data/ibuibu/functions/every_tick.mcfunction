@@ -19,9 +19,9 @@ execute as @a[scores={kamado=1}] run scoreboard players set @s kamado 0
 execute unless entity @a[tag=ikiru] run function ibuibu:win_oni
 
 # サイドバー情報更新
-scoreboard players operation nokorininnzuu nokorininnzuu = 残り人数 info
-scoreboard players operation timer timer = 残り時間 info
-scoreboard players operation kamado_kaisuu kamado_kaisuu = トーテム info
+scoreboard players operation 残り人数 info = nokorininnzuu nokorininnzuu
+scoreboard players operation 残り時間 info = timer timer
+scoreboard players operation トーテム info = kamado_kaisuu kamado_kaisuu
 
 
 

@@ -31,17 +31,17 @@ scoreboard players reset @a info
 
 scoreboard objectives setdisplay sidebar
 
-scoreboard objectives add tiemr dummy
+scoreboard objectives add timer dummy
 scoreboard players reset @a timer
 
 scoreboard objectives add timer_dummy dummy
 scoreboard players reset @a timer_dummy
 
-scoreboard objectives add tiemr_display dummy
-scoreboard players reset @a tiemr_display
+scoreboard objectives add timer_display dummy
+scoreboard players reset @a timer_display
 
 scoreboard objectives add timer_20 dummy
-scoreboard players set timer_20 tiemr_20 20
+scoreboard players set timer_20 timer_20 20
 
 
 # チーム消す
