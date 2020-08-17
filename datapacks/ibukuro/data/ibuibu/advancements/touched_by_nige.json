@@ -1,0 +1,21 @@
+{
+    "criteria": {
+        "ice_attack": {
+            "trigger": "minecraft:entity_hurt_player",
+            "conditions": {
+                  "damage": {
+                      "type": {
+                        "direct_entity": {
+                            "type": "player",
+                            "nbt": "{Tags:[\"nige\"]}"
+                        }
+                    }
+                }
+               
+            }
+        }
+    },
+    "rewards": {
+        "function": "ibuibu:touched_by_nige"
+    }
+}
