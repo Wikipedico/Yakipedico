@@ -22,7 +22,9 @@ function gameStart():
     execute console command "tp @a[team=nige] 128 100 -209 -180 0"
     execute console command "scoreboard objectives setdisplay sidebar.team.blue info"
     execute console command "setblock 103 1 -104 minecraft:spawner{MaxNearbyEntities:6s,RequiredPlayerRange:16s,SpawnCount:6s,SpawnData:{Health:1.0f,id:""minecraft:bat""},MaxSpawnDelay:200s,Delay:169s,SpawnRange:4s,MinSpawnDelay:100s,SpawnPotentials:[{Entity:{Health:1.0f,id:""minecraft:bat""},Weight:1}]}"
+    wait 1 tick
     execute console command "setblock 113 96 -266 minecraft:furnace[facing=south,lit=false]{CookTime:0s,BurnTime:0s,Items:[],RecipesUsedSize:0s,CookTimeTotal:0s}"
+    wait 1 tick
     execute console command "setblock 138 125 -235 minecraft:furnace[facing=west,lit=false]{CookTime:0s,BurnTime:0s,Items:[],RecipesUsedSize:0s,CookTimeTotal:0s}"
     set {surviver}  to online player count
     reduce {surviver} by amount of {oni::*}

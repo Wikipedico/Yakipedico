@@ -30,6 +30,9 @@ on right click:
     if player's tool is stick named "cat spawn":
         add location of block above event-block to {catPoint::*}
         broadcast "&a>System &r%location of block above event-block% を {catPoint::*} に追加しました"
+    if player's tool is stick named "cat spawn del":
+        remove location of block above event-block from {catPoint::*}
+        broadcast ">System %location of target block% を {catPoint::*} から削除しました"
 
 on right click on oak sign:
     if player's tool is nether star:
