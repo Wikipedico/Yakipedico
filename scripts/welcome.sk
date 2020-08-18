@@ -7,6 +7,8 @@ on skript load:
     set {oniOko} to false
     set {amountCat} to 0
     set {gameStatus} to 0
+    loop all players:
+        reset {yaku.%loop-player%}
     delete {oni::*}
     delete {nige::*}
     delete {tyuusen::*}
@@ -26,6 +28,8 @@ on join:
     set player's gamemode to adventure
     if {gameStatus} is 1:
         goKomori(player)
+    else:
+        reset {yaku.%player%}
 
 
 on quit:

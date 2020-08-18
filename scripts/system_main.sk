@@ -5,11 +5,11 @@ on chat:
 
 
 on damage:
-    if attacker is {oni::*}:
-        if victim is {nige::*}:
+    if {yaku.%attacker%} is "oni":
+        if {yaku.%victim%} is "nige":
             touchedByOni(victim)
-    if attacker is {nige::*}:
-        if victim is {oni::*}:
+    if {yaku.%attacker%} is "nige":
+        if {yaku.%victim%} is "oni":
             if {oniOko} is true:
                 touchedByNige(victim)
             else:

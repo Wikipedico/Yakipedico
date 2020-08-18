@@ -72,6 +72,7 @@ function becomeOni(p: player):
     execute console command "team join oni %{_p}%"
     execute console command "tp %{_p}% 112 76 -57 -90 0"
     remove {_p} from {nige::*}
+    set {yaku.%{_p}%} to "oni"
     add {_p} to {oni::*}
     execute console command "replaceitem entity %{_p}% armor.head minecraft:leather_helmet{display:{color:16777215}}"
     execute console command "replaceitem entity %{_p}% armor.chest minecraft:leather_chestplate{display:{color:16777215}}"
@@ -83,6 +84,7 @@ function becomeOni(p: player):
 function becomeNige(p: player):
     execute console command "team join nige %{_p}%"
     remove {_p} from {oni::*}
+    set {yaku.%{_p}%} to "nige"
     add {_p} to {nige::*}
 
 
@@ -110,6 +112,7 @@ function hukkatu(p: player):
     execute console command "effect give %{_p}% invisibility 10 10 true"
     remove 1 of nether star from {_p}
     add 1 to {surviver}
+    becomeNige({_p})
     message "&b>焼きおにぎり &c%{_p}% &rが復活しました" to {nige::*}
 
 
