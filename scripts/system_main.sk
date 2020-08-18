@@ -17,6 +17,9 @@ on damage:
     if event-entity is cat:
         if damage cause is fall:
             cancel event
+        if attacker is player:
+            kill event-entity
+
 
 on death of cat:
     hide event-entity
@@ -71,13 +74,13 @@ on right click on oak sign:
 
 
 every 1 tick in "world":
-    #execute console command "scoreboard players set 残り時間 info %{time}%"
-    #execute console command "scoreboard players set 残り人数 info %{surviver}%"
-    #execute console command "scoreboard players set 焼却トーテム数 info %{totem}%"
+    execute console command "scoreboard players set 残り時間 info %{time}%"
+    execute console command "scoreboard players set 残り人数 info %{surviver}%"
+    execute console command "scoreboard players set 焼却トーテム数 info %{totem}%"
 
-every 5 second:
+every 5 second in "world":
     if {gameStatus} is 1:
-        if {amountCat} is 5:
+        if {amountCat} is 10:
             stop
         else:
             set {_random} to random integer between amount of {catPoint::*} and 1
