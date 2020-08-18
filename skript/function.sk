@@ -45,7 +45,7 @@ function becomeOni(p: player):
     broadcast "[システム] 今回の鬼は %{_p}% です"
 
 function becomeNige(p: player):
-    execute console command "tema join nige %{_p}%"
+    execute console command "team join nige %{_p}%"
     remove {_p} from {oni::*}
     add {_p} to {nige::*}
 
