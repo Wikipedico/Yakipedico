@@ -29,26 +29,27 @@ function gameEnd():
 function huriwake():
     loop all players:
         if block under loop-player is gold block:
-            add loop-player to {tyuusen::*}
+            add loop-player to {tyuusen}
     if {tyuusen::*} is set:
-        set {random} to random number between amount of {tyuusen::*} and 1
-        add {tyuusen::%{random}%} to {oni::*}
         loop all players:
-            add loop-player to {nige::*}
-        remove {oni::*} from {nige::*}
-        set {huriwake} to true
-        becomeOni()
-        becomeNige()
-        broadcast "[システム] 今回の鬼は %{oni::*}% です"
+            if block under loop-player is gold block:
+                becomeNige(loop-player)
+                becomeOni(random player out of loop-player)
+            else:
+                becomeNige(loop-player)
     else:
         broadcast "[Error] 抽選対象がいません"
 
-function becomeOni():
-    execute console command "team join oni %{oni::*}%"
-    execute console command "tp @a[team=oni] 147 110 -142"
+function becomeOni(p: player):
+    execute console command "team join oni %{_p}%"
+    execute console command "tp %{_p}% 147 110 -142"
+    add {_p} to {oni::*}
 
-function becomeNige():
-    execute console command "tema join nige %{nige::*}%"
+function becomeNige(p: player):
+    execute console command "team leave %{_p}%"
+    execute console command "tema join nige %{_p}%"
+    remove {_p} from {oni::*}
+    add {_p} to {nige::*}
 
 
 function touchedByOni(p: player):
