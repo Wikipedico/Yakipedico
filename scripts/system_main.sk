@@ -7,10 +7,12 @@ on chat:
 on damage:
     if {yaku.%attacker%} is "oni":
         if {yaku.%victim%} is "nige":
-            touchedByOni(victim)
+                if {oniLevel} is not 4:
+                    touchedByOni(victim)
+                    oniLevelUp(0)
     if {yaku.%attacker%} is "nige":
         if {yaku.%victim%} is "oni":
-            if {oniOko} is true:
+            if {oniLevel} is 4:
                 touchedByNige(victim)
             else:
                 cancel event
@@ -49,36 +51,24 @@ on smelt:
     if ore slot of event-block is totem of undying:
         add 1 to {totem}
         if {totem} is 5:
-            execute console command "effect give @a[team=oni] speed 1000000 1 true"
-            execute console command "replaceitem entity @a[team=oni] armor.head minecraft:leather_helmet{display:{color:16716820}}"
-            execute console command "replaceitem entity @a[team=oni] armor.chest minecraft:leather_chestplate{display:{color:16716820}}"
-            execute console command "replaceitem entity @a[team=oni] armor.legs minecraft:leather_leggings{display:{color:16716820}}"
-            execute console command "replaceitem entity @a[team=oni] armor.feet minecraft:leather_boots{display:{color:16716820}}"
-            broadcast "<&4%{oni::*}%&r> &4ｳﾞｫｫｫｫｫｫｵ!!!"
-            broadcast "&b>焼きおにぎり &r悪霊の移動速度が上昇しました。現在のレベル：1"
+            set {oniLevel} to 1
+            broadcast "&b>焼きおにぎり &r悪霊のレベルが上がりました。現在のレベル：1"
         if {totem} is 10:
-            execute console command "effect give @a[team=oni] speed 1000000 2 true"
-            broadcast "<&4%{oni::*}%&r> &4ｳﾞｫｫｫｫｫｫｵ!!!"
-            broadcast "&b>焼きおにぎり &r悪霊の移動速度が上昇しました。現在のレベル：2"
+            set {oniLevel} to 2
+            broadcast "&b>焼きおにぎり &r悪霊のレベルが上がりました。現在のレベル：2"
         if {totem} is 15:
-            execute console command "effect give @a[team=oni] speed 1000000 3 true"
-            execute console command "replaceitem entity @a[team=oni] armor.head minecraft:diamond_helmet"
-            execute console command "replaceitem entity @a[team=oni] armor.chest minecraft:diamond_chestplate"
-            execute console command "replaceitem entity @a[team=oni] armor.legs minecraft:diamond_leggings"
-            execute console command "replaceitem entity @a[team=oni] armor.feet minecraft:diamond_boots"
-            broadcast "<&4%{oni::*}%&r> &4ｳﾞｫｫｫｫｫｫｵ!!!"
-            broadcast "&b>焼きおにぎり &r悪霊の移動速度が上昇しました。現在のレベル：3"
+            set {oniLevel} to 3
+            broadcast "&b>焼きおにぎり &r悪霊のレベルが上がりました。現在のレベル：3"
         if {totem} is 20:
-            execute console command "effect clear @a[team=oni]"
-            execute console command "replaceitem entity @a[team=oni] armor.head minecraft:leather_helmet{display:{color:16777215}}"
-            execute console command "replaceitem entity @a[team=oni] armor.chest air"
-            execute console command "replaceitem entity @a[team=oni] armor.legs air"
-            execute console command "replaceitem entity @a[team=oni] armor.feet air"
-            execute console command "setblock 113 96 -266 air"
-            execute console command "setblock 138 125 -235 air"
+            set {oniLevel} to 4
+            oniLevelUp(4)
             broadcast "<&4%{oni::*}%&r> &4ｳﾞｫｫ…"
             broadcast "&b>焼きおにぎり &r悪霊が弱体化しました。"
-            set {oniOko} to true
+            stop
+        broadcast "<&4%{oni::*}%&r> &4ｳﾞｫｫｫｫｫｫｵ!!!"
+        oniLevelUp(%{oniLevel}%)
+        wait 60 second
+        oniLevelUp(0)
 
 
 

@@ -4,9 +4,9 @@ on skript load:
     set {time} to 900
     set {totem} to 0
     set {huriwake} to false
-    set {oniOko} to false
     set {amountCat} to 0
     set {gameStatus} to 0
+    set {oniLevel} to 0
     loop all players:
         set {yaku.%loop-player%} to "none"
     delete {oni::*}

@@ -30,6 +30,7 @@ function gameStart():
     reduce {surviver} by amount of {oni::*}
     set {oniStart} to {time}
     reduce {oniStart} by 15
+    execute console command "setblock 113 96 -266 minecraft:furnace[facing=south,lit=false]{CookTime:0s,BurnTime:0s,Items:[],RecipesUsedSize:0s,CookTimeTotal:0s}"
     loop all players:
         set {status.%loop-player%} to "alive"
         set loop-player's gamemode to adventure
@@ -81,7 +82,6 @@ function becomeOni(p: player):
     execute console command "replaceitem entity %{_p}% armor.chest minecraft:leather_chestplate{display:{color:16777215}}"
     execute console command "replaceitem entity %{_p}% armor.legs minecraft:leather_leggings{display:{color:16777215}}"
     execute console command "replaceitem entity %{_p}% armor.feet minecraft:leather_boots{display:{color:16777215}}"
-    execute console command "effect give %{_p}% speed 1000000 0 true"
     broadcast "&b>焼きおにぎり &r今回の鬼は &4%{_p}% &rです"
 
 function becomeNige(p: player):
@@ -138,3 +138,42 @@ function goKomori(p: player):
     execute console command "tp %{_p}% 103 2 -104 0 0"
     broadcast "&b>焼きおにぎり &c%{_p}% &rが捕まりました"
     clear {_p}
+
+
+function oniLevelUp(n: number):
+    if {_n} is 0:
+        execute console command "effect clear @a[team=oni]"
+        execute console command "effect give @a[team=oni] speed 1000000 0 true"
+        execute console command "replaceitem entity @a[team=oni] armor.head minecraft:leather_helmet{display:{color:16777215}}"
+        execute console command "replaceitem entity @a[team=oni] armor.chest minecraft:leather_chestplate{display:{color:16777215}}"
+        execute console command "replaceitem entity @a[team=oni] armor.legs minecraft:leather_leggings{display:{color:16777215}}"
+        execute console command "replaceitem entity @a[team=oni] armor.feet minecraft:leather_boots{display:{color:16777215}}"
+    if {_n} is 1:
+        execute console command "effect clear @a[team=oni]"
+        execute console command "effect give @a[team=oni] speed 1000000 1 true"
+        execute console command "replaceitem entity @a[team=oni] armor.head minecraft:leather_helmet{display:{color:16716820}}"
+        execute console command "replaceitem entity @a[team=oni] armor.chest minecraft:leather_chestplate{display:{color:16716820}}"
+        execute console command "replaceitem entity @a[team=oni] armor.legs minecraft:leather_leggings{display:{color:16716820}}"
+        execute console command "replaceitem entity @a[team=oni] armor.feet minecraft:leather_boots{display:{color:16716820}}"
+    if {_n} is 2:
+        execute console command "effect clear @a[team=oni]"
+        execute console command "effect give @a[team=oni] speed 1000000 2 true"
+        execute console command "replaceitem entity @a[team=oni] armor.head minecraft:leather_helmet{display:{color:16716820}}"
+        execute console command "replaceitem entity @a[team=oni] armor.chest minecraft:leather_chestplate{display:{color:16716820}}"
+        execute console command "replaceitem entity @a[team=oni] armor.legs minecraft:leather_leggings{display:{color:16716820}}"
+        execute console command "replaceitem entity @a[team=oni] armor.feet minecraft:leather_boots{display:{color:16716820}}"
+    if {_n} is 3:
+        execute console command "effect clear @a[team=oni]"
+        execute console command "effect give @a[team=oni] speed 1000000 3 true"
+        execute console command "replaceitem entity @a[team=oni] armor.head minecraft:diamond_helmet"
+        execute console command "replaceitem entity @a[team=oni] armor.chest minecraft:diamond_chestplate"
+        execute console command "replaceitem entity @a[team=oni] armor.legs minecraft:diamond_leggings"
+        execute console command "replaceitem entity @a[team=oni] armor.feet minecraft:diamond_boots"
+    if {_n} is 4:
+        execute console command "effect clear @a[team=oni]"
+        execute console command "replaceitem entity @a[team=oni] armor.head minecraft:leather_helmet{display:{color:16777215}}"
+        execute console command "replaceitem entity @a[team=oni] armor.chest air"
+        execute console command "replaceitem entity @a[team=oni] armor.legs air"
+        execute console command "replaceitem entity @a[team=oni] armor.feet air"
+        execute console command "setblock 113 96 -266 air"
+        execute console command "setblock 138 125 -235 air"
