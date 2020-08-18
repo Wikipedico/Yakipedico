@@ -1,15 +1,19 @@
 function gameStart():
     wait 1 second
-    broadcast "\n&e3"
+    broadcast " "
+    broadcast "&e3"
     play sound "block.note_block.harp" to all players
     wait 1 second
-    broadcast "\n&e2"
+    broadcast " "
+    broadcast "&e2"
     play sound "block.note_block.harp" to all players
     wait 1 second
-    broadcast "\n&e1"
+    broadcast " "
+    broadcast "&e1"
     play sound "block.note_block.harp" to all players
     wait 1 second
-    broadcast "\n&6START"
+    broadcast " "
+    broadcast "&6START"
     play sound "block.anvil.land" to all players
     set {gameStatus} to 1
     set {timer} to true
@@ -80,8 +84,8 @@ function becomeNige(p: player):
 function touchedByOni(p: player):
     if {_p}'s tool is totem of undying:
         remove 1 of totem of undying from {_p}
-        execute console command "effect give @a[team=oni] blindness 15 1 true"
-        execute console command "effect give @a[team=oni] slowness 15 1 true"
+        execute console command "effect give @a[team=oni] blindness 10 1 true"
+        execute console command "effect give @a[team=oni] slowness 10 1 true"
     else:
         goKomori({_p})
         reduce {surviver} by 1
@@ -105,13 +109,15 @@ function hukkatu(p: player):
 
 
 function winOni():
-    broadcast "&b>Game 悪霊の勝利！！\n[悪霊 : %{oni::*}%]"
+    broadcast "&b>Game &r悪霊の勝利！！"
+    broadcast "[悪霊 : %{oni::*}%]"
     execute console command "tp @a[team=oni] 129 76 -57 90 0"
     execute console command "tp @a[team=nige] 112 76 -57 -90 0"
     gameEnd()
 
 function winNige():
-    broadcast "&b>Game 人間の勝利！！\n[人間 : %{nige::*}%]"
+    broadcast "&b>Game &r人間の勝利！！"
+    broadcast "[人間 : %{nige::*}%]"
     execute console command "tp @a[team=nige] 129 76 -57 90 0"
     execute console command "tp @a[team=oni] 112 76 -57 -90 0"
     gameEnd()

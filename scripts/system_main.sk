@@ -14,11 +14,11 @@ on damage:
                 touchedByNige(victim)
             else:
                 cancel event
-    if event-entity is cat:
+    if victim is cat:
         if damage cause is fall:
             cancel event
         if attacker is player:
-            kill event-entity
+            kill victim
 
 
 on death of cat:

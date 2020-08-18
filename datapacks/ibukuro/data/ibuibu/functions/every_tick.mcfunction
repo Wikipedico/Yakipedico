@@ -27,6 +27,7 @@ execute if score lobby lobby matches 0 run effect give @a night_vision 1000000 2
 
 # ねこちゃん静かにね
 stopsound @a * minecraft:entity.cat.death
+stopsound @a * minecraft:entity.cat.hurt
 
 
 
