@@ -40,11 +40,11 @@ function huriwake():
 function becomeOni(p: player):
     execute console command "team join oni %{_p}%"
     execute console command "tp %{_p}% 147 110 -142"
+    remove {_p} from {nige::*}
     add {_p} to {oni::*}
     broadcast "[システム] 今回の鬼は %{_p}% です"
 
 function becomeNige(p: player):
-    execute console command "team leave %{_p}%"
     execute console command "tema join nige %{_p}%"
     remove {_p} from {oni::*}
     add {_p} to {nige::*}
