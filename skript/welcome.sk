@@ -2,6 +2,7 @@ on skript load:
     set {status} to 0
     set {timer} to false
     set {time} to 900
+    set {totem} to 0
     set {huriwake} to false
     set {oniOko} to false
     delete {oni::*}
