@@ -73,3 +73,10 @@ command /win <text>:
             winNige()
         if arg-1 is "oni":
             winOni()
+
+command /deletecatloca:
+    permission: skript.admin
+    permission message:Admin専用コマンドです。
+    trigger:
+        remove location of target block from {catPoint::*}
+        broadcast ">System %location of target block% を {catPoint::*} から削除しました"
