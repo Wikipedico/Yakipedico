@@ -16,9 +16,8 @@ on damage:
 
 
 on smelt:
-    if event-item is totem of undying:
+    if ore slot of event-block is totem of undying:
         add 1 to {totem}
-        broadcast "w"
         if {totem} is 5:
             execute console command "effect give @a[team=oni] speed 1000000 0 true"
         if {totem} is 10:
@@ -39,6 +38,6 @@ on right click on oak sign:
 
 
 every 1 tick:
-    execute console command "scoreboard players set 残り時間 info %{time}%"
-    execute console command "scoreboard players set 残り人数 info %{surviver}%"
-    execute console command "scoreboard players set 焼却トーテム数 info %{totem}%"
+    #execute console command "scoreboard players set 残り時間 info %{time}%"
+    #execute console command "scoreboard players set 残り人数 info %{surviver}%"
+    #execute console command "scoreboard players set 焼却トーテム数 info %{totem}%"
