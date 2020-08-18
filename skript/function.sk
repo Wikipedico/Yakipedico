@@ -56,8 +56,8 @@ function becomeNige(p: player):
 function touchedByOni(p: player):
     if {_p}'s tool is totem of undying:
         remove 1 of totem of undying from {_p}
-        execute console command "effect give @a[team=oni] blindness 15 100 true"
-        execute console command "effect give @a[team=oni] slowness 15 100 true"
+        execute console command "effect give @a[team=oni] blindness 15 1 true"
+        execute console command "effect give @a[team=oni] slowness 15 1 true"
     else:
         set {status.%{_p}%} to "death"
         execute console command "tp {_p} 137 35 -126"
