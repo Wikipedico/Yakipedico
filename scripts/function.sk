@@ -22,6 +22,8 @@ function gameStart():
     execute console command "tp @a[team=nige] 128 100 -209 -180 0"
     execute console command "scoreboard objectives setdisplay sidebar.team.blue info"
     execute console command "setblock 103 1 -104 minecraft:spawner{MaxNearbyEntities:6s,RequiredPlayerRange:16s,SpawnCount:3s,SpawnData:{Health:1.0f,id:""minecraft:bat""},MaxSpawnDelay:200s,Delay:169s,SpawnRange:4s,MinSpawnDelay:100s,SpawnPotentials:[{Entity:{Health:1.0f,id:""minecraft:bat""},Weight:1}]}"
+    execute console command "setblock 113 96 -266 minecraft:furnace[facing=south,lit=false]{CookTime:0s,BurnTime:0s,Items:[],RecipesUsedSize:0s,CookTimeTotal:0s}"
+    execute console command "setblock 138 125 -235 minecraft:furnace[facing=west,lit=false]{CookTime:0s,BurnTime:0s,Items:[],RecipesUsedSize:0s,CookTimeTotal:0s}"
     set {surviver}  to online player count
     reduce {surviver} by amount of {oni::*}
     set {oniStart} to {time}
@@ -76,7 +78,7 @@ function becomeOni(p: player):
     execute console command "replaceitem entity %{_p}% armor.legs minecraft:leather_leggings{display:{color:16777215}}"
     execute console command "replaceitem entity %{_p}% armor.feet minecraft:leather_boots{display:{color:16777215}}"
     execute console command "effect give %{_p}% speed 1000000 0 true"
-    broadcast "&b>Game &r今回の鬼は &4%{_p}% &rです"
+    broadcast "&b>焼きおにぎり &r今回の鬼は &4%{_p}% &rです"
 
 function becomeNige(p: player):
     execute console command "team join nige %{_p}%"
@@ -99,7 +101,7 @@ function touchedByOni(p: player):
 function touchedByNige(p: player):
     drop a diamond at {_p}'s location
     set {_p}'s gamemode to spectator
-    broadcast "&b>Game &4%{_p}% &rが倒されました"
+    broadcast "&b>焼きおにぎり &4%{_p}% &rが倒されました"
 
 
 function hukkatu(p: player):
@@ -108,18 +110,18 @@ function hukkatu(p: player):
     execute console command "effect give %{_p}% invisibility 10 10 true"
     remove 1 of nether star from {_p}
     add 1 to {surviver}
-    message "&b>Game &c%{_p}% &rが復活しました" to {nige::*}
+    message "&b>焼きおにぎり &c%{_p}% &rが復活しました" to {nige::*}
 
 
 function winOni():
-    broadcast "&b>Game &r悪霊の勝利！！"
+    broadcast "&b>焼きおにぎり &r悪霊の勝利！！"
     broadcast "[悪霊 : %{oni::*}%]"
     execute console command "tp @a[team=oni] 129 76 -57 90 0"
     execute console command "tp @a[team=nige] 112 76 -57 -90 0"
     gameEnd()
 
 function winNige():
-    broadcast "&b>Game &r人間の勝利！！"
+    broadcast "&b>焼きおにぎり &r人間の勝利！！"
     broadcast "[人間 : %{nige::*}%]"
     execute console command "tp @a[team=nige] 129 76 -57 90 0"
     execute console command "tp @a[team=oni] 112 76 -57 -90 0"
@@ -128,5 +130,5 @@ function winNige():
 function goKomori(p: player):
     set {status.%{_p}%} to "death"
     execute console command "tp %{_p}% 103 2 -104 0 0"
-    broadcast "&b>Game &c%{_p}% &rが捕まりました"
+    broadcast "&b>焼きおにぎり &c%{_p}% &rが捕まりました"
     clear {_p}
