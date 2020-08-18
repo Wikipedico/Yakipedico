@@ -15,10 +15,10 @@ on damage:
             else:
                 cancel event
     if victim is cat:
-        cancel event
         chance of 30%:
             drop totem of undying
         delete event-entity
+        reduce {amountCat} by 1
 
 
 
