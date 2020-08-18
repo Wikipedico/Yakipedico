@@ -32,6 +32,8 @@ scoreboard players set kamado_kaisuu kamado_kaisuu 0
 scoreboard objectives add oni_oko dummy
 scoreboard players set oni_oko oni_oko 0
 
+scoreboard objectives remove info
+
 scoreboard objectives add info dummy
 scoreboard players reset @a info
 

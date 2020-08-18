@@ -45,7 +45,7 @@ command /become <text> [<player>]:
                 becomeOni(player)
             else:
                 becomeOni(arg-2)
-        if arg-1 is "nige"
+        if arg-1 is "nige":
             if arg-2 is not set:
                 becomeNige(player)
             else:
