@@ -42,33 +42,33 @@ stopsound @a * minecraft:entity.cat.stray_ambient
 
 
 # 脱出チェスト関係
-#replaceitem block 128 100 -207 container.0 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.1 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.2 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.3 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.4 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.5 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.6 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.7 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.8 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.9 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.10 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.11 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.12 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.0 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.1 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.2 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.3 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.4 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.5 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.6 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.7 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.8 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.9 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.10 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.11 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.12 minecraft:gray_stained_glass_pane
 
-#replaceitem block 128 100 -207 container.14 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.15 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.16 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.17 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.18 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.19 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.20 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.21 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.22 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.23 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.24 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.25 minecraft:gray_stained_glass_pane
-#replaceitem block 128 100 -207 container.26 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.14 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.15 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.16 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.17 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.18 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.19 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.20 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.21 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.22 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.23 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.24 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.25 minecraft:gray_stained_glass_pane
+replaceitem block 128 100 -207 container.26 minecraft:gray_stained_glass_pane
 
 # clear @a gray_stained_glass_pane
 

@@ -8,7 +8,6 @@ function gameStart():
     execute console command "scoreboard objectives setdisplay sidebar.team.blue info"
     set {surviver}  to online player count
     reduce {surviver} by amount of {oni::*}
-    spawnCat()
     loop all players:
         set {status.%loop-player%} to "alive"
         set loop-player's gamemode to adventure
@@ -27,6 +26,7 @@ function gameEnd():
     execute console command "spawnpoint @a 137 36 -126"
     execute console command "scoreboard players set lobby lobby 0"
     execute console command "scoreboard objectives setdisplay sidebar.team.blue"
+    execute console command "kill @e[type=cat]"
 
 
 function huriwake():
@@ -95,12 +95,3 @@ function winNige():
     execute console command "tp @a[team=oni] 125 123 -152"
     gameEnd()
 
-
-
-
-function spawnCat():
-    loop all blocks:
-        if loop-block is air:
-            set {_loopBlockLocation} to loop-block
-            if block under {_loopBlockLocation} is spruce planks:
-                add loop-block to {spawnBlock::*}

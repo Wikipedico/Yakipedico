@@ -5,6 +5,8 @@ on skript load:
     set {totem} to 0
     set {huriwake} to false
     set {oniOko} to false
+    set {amountCat} to 0
+    set {gameStatus} to 0
     delete {oni::*}
     delete {nige::*}
     delete {tyuusen::*}

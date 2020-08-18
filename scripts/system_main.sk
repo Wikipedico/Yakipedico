@@ -14,13 +14,24 @@ on damage:
                 touchedByNige(victim)
             else:
                 cancel event
+    if event-entity is cat:
+        if damage cause is fall:
+            cancel event
 
 on death of cat:
     hide event-entity
     reduce {amountCat} by 1
 
 
+on right click:
+    if player's tool is stick named "cat spawn":
+        add location of block above event-block to {catPoint::*}
+        broadcast ">System %location of block above event-block% を {catPoint::*} に追加しました"
 
+
+on inventory click:
+    if event-item is gray stained glass pane:
+        cancel event
 
 
 on smelt:
@@ -45,18 +56,20 @@ on right click on oak sign:
 
 
 
-every 1 tick:
-    execute console command "scoreboard players set 残り時間 info %{time}%"
-    execute console command "scoreboard players set 残り人数 info %{surviver}%"
-    execute console command "scoreboard players set 焼却トーテム数 info %{totem}%"
+every 1 tick in "world":
+    #execute console command "scoreboard players set 残り時間 info %{time}%"
+    #execute console command "scoreboard players set 残り人数 info %{surviver}%"
+    #execute console command "scoreboard players set 焼却トーテム数 info %{totem}%"
 
 every 5 second:
     if {gameStatus} is 1:
         if {amountCat} is 5:
             stop
         else:
-            set {randomBlock} to random number between amount of {spawnBlock::*} and 1
-            spawn 1 cat at {spawnBlock::%{randomBlock}%}
+            set {_random} to random integer between amount of {catPoint::*} and 1
+            broadcast "%{_random}%"
+            spawn a cat at {catPoint::%{_random}%}
+            broadcast "%{catPoint::%{_random}%}%"
             add 1 to {amountCat}
     else:
         stop

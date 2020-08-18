@@ -25,9 +25,6 @@ command /huriwake:
     trigger:
         huriwake()
 
-command /setloca <text>:
-    trigger:
-        set {%arg-1%} to location of target block
 
 command /joinCount:
     permission: skript.admin
@@ -52,3 +49,26 @@ command /become <text> [<player>]:
                 becomeNige(arg-2)
         else:
             message "/become <oni/nige> [<player>]" to player
+
+
+command /resetcatloca:
+    permission: skript.admin
+    permission message:Admin専用コマンドです。
+    trigger:
+        delete {catPoint::*}
+
+command /definecatloca:
+    permission: skript.admin
+    permission message:Admin専用コマンドです。
+    trigger:
+        give a stick named "cat spawn" to player
+
+
+command /win <text>:
+    permission: skript.admin
+    permission message:Admin専用コマンドです。
+    trigger:
+        if arg-1 is "nige":
+            winNige()
+        if arg-1 is "oni":
+            winOni()
