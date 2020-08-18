@@ -1,0 +1,44 @@
+on chat:
+    if {gameStatus} is 1:
+        cancel event
+        message "[システム] ゲーム中はチャットの使用ができません"
+
+
+on damage:
+    if attacker is {oni::*}:
+        if victim is {nige::*}:
+            touchedByOni(victim)
+    if attacker is {nige::*}:
+        if victim is {oni::*}:
+            if {oniOko} is true:
+                touchedByNige(victim)
+
+
+
+on smelt:
+    if event-item is totem of undying:
+        add 1 to {totem}
+        broadcast "w"
+        if {totem} is 5:
+            execute console command "effect give @a[team=oni] speed 1000000 0 true"
+        if {totem} is 10:
+            execute console command "effect give @a[team=oni] speed 1000000 1 true"
+        if {totem} is 15:
+            execute console command "effect give @a[team=oni] speed 1000000 2 true"
+        if {totem} is 20:
+            execute console command "effect clear @a[team=oni]"
+            set {oniOko} to true
+
+on right click on oak sign:
+    if player's tool is nether star:
+        hukkatu(player)
+    else:
+        message "[システム] ネザースターを手に持ってクリックしてください"
+
+
+
+
+every 1 tick:
+    execute console command "scoreboard players set 残り時間 info %{time}%"
+    execute console command "scoreboard players set 残り人数 info %{surviver}%"
+    execute console command "scoreboard players set 焼却トーテム数 info %{totem}%"
