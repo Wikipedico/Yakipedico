@@ -141,6 +141,12 @@ function goKomori(p: player):
 
 
 function oniLevelUp(n: number):
+    if {_n} is -1:
+        execute console command "effect clear @a[team=oni]"
+        execute console command "replaceitem entity @a[team=oni] armor.head minecraft:leather_helmet{display:{color:16777215}}"
+        execute console command "replaceitem entity @a[team=oni] armor.chest minecraft:leather_chestplate{display:{color:16777215}}"
+        execute console command "replaceitem entity @a[team=oni] armor.legs minecraft:leather_leggings{display:{color:16777215}}"
+        execute console command "replaceitem entity @a[team=oni] armor.feet minecraft:leather_boots{display:{color:16777215}}"
     if {_n} is 0:
         execute console command "effect clear @a[team=oni]"
         execute console command "replaceitem entity @a[team=oni] armor.head minecraft:leather_helmet{display:{color:16777215}}"

@@ -8,7 +8,7 @@ on damage:
     if {yaku.%attacker%} is "oni":
         if {yaku.%victim%} is "nige":
             if {oniLevel} is not 4:
-                oniLevelUp(0)
+                oniLevelUp(-1)
                 touchedByOni(victim)
     if {yaku.%attacker%} is "nige":
         if {yaku.%victim%} is "oni":
