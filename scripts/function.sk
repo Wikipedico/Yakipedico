@@ -8,6 +8,7 @@ function gameStart():
     execute console command "scoreboard objectives setdisplay sidebar.team.blue info"
     set {surviver}  to online player count
     reduce {surviver} by amount of {oni::*}
+    spawnCat()
     loop all players:
         set {status.%loop-player%} to "alive"
         set loop-player's gamemode to adventure

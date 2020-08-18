@@ -24,7 +24,16 @@ execute if score lobby lobby matches 0 run effect give @a night_vision 1000000 2
 # scoreboard players operation トーテム info = kamado_kaisuu kamado_kaisuu
 
 
-
+# ねこちゃん静かにね
+stopsound @a * minecraft:entity.cat.ambient
+stopsound @a * minecraft:entity.cat.beg_for_food
+stopsound @a * minecraft:entity.cat.death
+stopsound @a * minecraft:entity.cat.eat
+stopsound @a * minecraft:entity.cat.hiss
+stopsound @a * minecraft:entity.cat.hurt
+stopsound @a * minecraft:entity.cat.purr
+stopsound @a * minecraft:entity.cat.purreow
+stopsound @a * minecraft:entity.cat.stray_ambient
 
 
 
