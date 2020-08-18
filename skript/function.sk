@@ -29,7 +29,7 @@ function gameEnd():
 function huriwake():
     loop all players:
         if block under loop-player is gold block:
-            add loop-player to {tyuusen}
+            add loop-player to {tyuusen::*}
     if {tyuusen::*} is set:
         loop all players:
             if block under loop-player is gold block:
