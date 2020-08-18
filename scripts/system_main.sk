@@ -1,7 +1,7 @@
 on chat:
     if {gameStatus} is 1:
         cancel event
-        message "[システム] ゲーム中はチャットの使用ができません"
+        message "[システム] ゲーム中はチャットの使用ができません" to player
 
 
 on damage:
@@ -39,19 +39,33 @@ on smelt:
         add 1 to {totem}
         if {totem} is 5:
             execute console command "effect give @a[team=oni] speed 1000000 0 true"
+            execute console command "replaceitem entity @a[team=oni] armor.head minecraft:leather_helmet{display:{color:16716820}}"
+            execute console command "replaceitem entity @a[team=oni] armor.chest minecraft:leather_chestplate{display:{color:16716820}}"
+            execute console command "replaceitem entity @a[team=oni] armor.legs minecraft:leather_leggings{display:{color:16716820}}"
+            execute console command "replaceitem entity @a[team=oni] armor.feet minecraft:leather_boots{display:{color:16716820}}"
         if {totem} is 10:
             execute console command "effect give @a[team=oni] speed 1000000 1 true"
         if {totem} is 15:
             execute console command "effect give @a[team=oni] speed 1000000 2 true"
+            execute console command "replaceitem entity @a[team=oni] armor.head minecraft:diamond_helmet"
+            execute console command "replaceitem entity @a[team=oni] armor.chest minecraft:diamond_chestplate"
+            execute console command "replaceitem entity @a[team=oni] armor.legs minecraft:diamond_leggings"
+            execute console command "replaceitem entity @a[team=oni] armor.feet minecraft:diamond_boots"
         if {totem} is 20:
             execute console command "effect clear @a[team=oni]"
+            execute console command "replaceitem entity @a[team=oni] armor.head minecraft:leather_helmet{display:{color:16777215}}"
+            execute console command "replaceitem entity @a[team=oni] armor.chest air"
+            execute console command "replaceitem entity @a[team=oni] armor.legs air"
+            execute console command "replaceitem entity @a[team=oni] armor.feet air"
             set {oniOko} to true
+
+
 
 on right click on oak sign:
     if player's tool is nether star:
         hukkatu(player)
     else:
-        message "[システム] ネザースターを手に持ってクリックしてください"
+        message "&b>Game &rネザースターを手に持ってクリックしてください" to player
 
 
 

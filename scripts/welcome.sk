@@ -12,6 +12,7 @@ on skript load:
     delete {tyuusen::*}
     execute console command "scoreboard players set lobby lobby 0"
     execute console command "scoreboard objectives setdisplay sidebar.team.blue"
+    execute console command "setblock 103 1 -104 air"
 
 
 on first join:
@@ -22,7 +23,15 @@ on first join:
 on join:
     set the join message to "&e%player% joined the game"
     set player's gamemode to adventure
+    if {gameStatus} is 1:
+        goKomori(player)
 
 
 on quit:
     set the quit message to "&e%player% left the game"
+    if {gameStatus} is 1:
+        reduce {surviver} by 1
+        if {surviver} is 0:
+            winOni()
+        if player has diamond:
+            drop diamond

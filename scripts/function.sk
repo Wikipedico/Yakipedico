@@ -1,13 +1,27 @@
 function gameStart():
+    wait 1 second
+    broadcast "\n&e3"
+    play sound "block.note_block.harp" to all players
+    wait 1 second
+    broadcast "\n&e2"
+    play sound "block.note_block.harp" to all players
+    wait 1 second
+    broadcast "\n&e1"
+    play sound "block.note_block.harp" to all players
+    wait 1 second
+    broadcast "\n&6START"
+    play sound "block.anvil.land" to all players
     set {gameStatus} to 1
     set {timer} to true
     execute console command "scoreboard players set lobby lobby 1"
     execute console command "effect clear @a"
-    execute console command "tp @a[team=nige] 128 100 -209"
-    execute console command "tp @a[team=oni] @e[type=armor_stand,tag=tp_oni,sort=random,limit=1]"
+    execute console command "tp @a[team=nige] 128 100 -209 -180 0"
     execute console command "scoreboard objectives setdisplay sidebar.team.blue info"
+    execute console command "setblock 103 1 -104 minecraft:spawner{MaxNearbyEntities:6s,RequiredPlayerRange:16s,SpawnCount:3s,SpawnData:{Health:1.0f,id:""minecraft:bat""},MaxSpawnDelay:200s,Delay:169s,SpawnRange:4s,MinSpawnDelay:100s,SpawnPotentials:[{Entity:{Health:1.0f,id:""minecraft:bat""},Weight:1}]}"
     set {surviver}  to online player count
     reduce {surviver} by amount of {oni::*}
+    set {oniStart} to {time}
+    reduce {oniStart} by 15
     loop all players:
         set {status.%loop-player%} to "alive"
         set loop-player's gamemode to adventure
@@ -16,17 +30,22 @@ function gameStart():
         if {time} is 0:
             winOni()
             set {timer} to false
+        if {time} is {oniStart}:
+            execute console command "tp @a[team=oni] 127 95 -224 -180 0"
         wait 1 second
 
 
 function gameEnd():
+    play sound "ui.toast.challenge_complete" with volume 0.8 to all players
     set {gameStatus} to 0
     set {timer} to false
     execute console command "effect clear @a"
-    execute console command "spawnpoint @a 137 36 -126"
     execute console command "scoreboard players set lobby lobby 0"
     execute console command "scoreboard objectives setdisplay sidebar.team.blue"
     execute console command "kill @e[type=cat]"
+    execute console command "kill @e[type=bat]"
+    execute console command "kill @e[type=item]"
+    execute console command "setblock 103 1 -104 air"
 
 
 function huriwake():
@@ -39,14 +58,18 @@ function huriwake():
         becomeOni(random player out of {tyuusen::*})
         set {huriwake} to true
     else:
-        broadcast "[Error] 抽選対象がいません"
+        broadcast "&c>Error &r抽選対象がいません"
 
 function becomeOni(p: player):
     execute console command "team join oni %{_p}%"
-    execute console command "tp %{_p}% 147 110 -142"
+    execute console command "tp %{_p}% 112 76 -57 -90 0"
     remove {_p} from {nige::*}
     add {_p} to {oni::*}
-    broadcast "[システム] 今回の鬼は &4%{_p}% &rです"
+    execute console command "replaceitem entity %{_p}% armor.head minecraft:leather_helmet{display:{color:16777215}}"
+    execute console command "replaceitem entity %{_p}% armor.chest minecraft:leather_chestplate{display:{color:16777215}}"
+    execute console command "replaceitem entity %{_p}% armor.legs minecraft:leather_leggings{display:{color:16777215}}"
+    execute console command "replaceitem entity %{_p}% armor.feet minecraft:leather_boots{display:{color:16777215}}"
+    broadcast "&b>Game &r今回の鬼は &4%{_p}% &rです"
 
 function becomeNige(p: player):
     execute console command "team join nige %{_p}%"
@@ -60,10 +83,7 @@ function touchedByOni(p: player):
         execute console command "effect give @a[team=oni] blindness 15 1 true"
         execute console command "effect give @a[team=oni] slowness 15 1 true"
     else:
-        set {status.%{_p}%} to "death"
-        execute console command "tp %{_p}% 137 35 -126"
-        broadcast "[システム] %{_p}% が捕まりました"
-        clear {_p}
+        goKomori({_p})
         reduce {surviver} by 1
         if {surviver} is 0:
             winOni()
@@ -71,27 +91,33 @@ function touchedByOni(p: player):
 
 function touchedByNige(p: player):
     drop a diamond at {_p}'s location
-    execute console command "spawnpoint %{_p}% 125 123 -158"
-    kill {_p}
+    set {_p}'s gamemode to spectator
+    broadcast "&b>Game &4%{_p}% &rが倒されました"
 
 
 function hukkatu(p: player):
     set {status.%{_p}%} to "alive"
-    execute console command "tp %{_p}% 128 100 -211"
+    execute console command "tp %{_p}% 128 100 -209 -180 0"
     execute console command "effect give %{_p}% invisibility 10 10 true"
     remove 1 of nether star from {_p}
     add 1 to {surviver}
+    message "&b>Game &c%{_p}% &rが復活しました" to {nige::*}
 
 
 function winOni():
-    broadcast "[システム] "
-    execute console command "tp @a[team=oni] 125 123 -158"
-    execute console command "tp @a[team=nige] 125 123 -151"
+    broadcast "&b>Game 悪霊の勝利！！\n[悪霊 : %{oni::*}%]"
+    execute console command "tp @a[team=oni] 129 76 -57 90 0"
+    execute console command "tp @a[team=nige] 112 76 -57 -90 0"
     gameEnd()
 
 function winNige():
-    broadcast "[システム] "
-    execute console command "tp @a[team=nige] 125 123 -158"
-    execute console command "tp @a[team=oni] 125 123 -152"
+    broadcast "&b>Game 人間の勝利！！\n[人間 : %{nige::*}%]"
+    execute console command "tp @a[team=nige] 129 76 -57 90 0"
+    execute console command "tp @a[team=oni] 112 76 -57 -90 0"
     gameEnd()
 
+function goKomori(p: player):
+    set {status.%{_p}%} to "death"
+    execute console command "tp %{_p}% 103 2 -104 0 0"
+    broadcast "&b>Game &c%{_p}% &rが捕まりました"
+    clear {_p}
