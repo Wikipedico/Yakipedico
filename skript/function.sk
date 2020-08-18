@@ -42,7 +42,7 @@ function becomeOni(p: player):
     execute console command "tp %{_p}% 147 110 -142"
     remove {_p} from {nige::*}
     add {_p} to {oni::*}
-    broadcast "[システム] 今回の鬼は %{_p}% です"
+    broadcast "[システム] 今回の鬼は &4%{_p}% &rです"
 
 function becomeNige(p: player):
     execute console command "team join nige %{_p}%"
