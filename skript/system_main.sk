@@ -13,18 +13,17 @@ on damage:
             if {oniOko} is true:
                 touchedByNige(victim)
 
-on fuel burning::
-    if event-item is melon seeds:
-        add 1 to {totem}
-        if {totem} is 5:
-            execute console command "effect give @a[team=oni] speed 1000000 0 true"
-        if {totem} is 10:
-            execute console command "effect give @a[team=oni] speed 1000000 1 true"
-        if {totem} is 15:
-            execute console command "effect give @a[team=oni] speed 1000000 2 true"
-        if {totem} is 20:
-            execute console command "effect clear @a[team=oni]"
-            set {oniOko} to true
+on fuel burn:
+    add 1 to {totem}
+    if {totem} is 5:
+        execute console command "effect give @a[team=oni] speed 1000000 0 true"
+    if {totem} is 10:
+        execute console command "effect give @a[team=oni] speed 1000000 1 true"
+    if {totem} is 15:
+        execute console command "effect give @a[team=oni] speed 1000000 2 true"
+    if {totem} is 20:
+        execute console command "effect clear @a[team=oni]"
+        set {oniOko} to true
 
 on right click on oak sign:
     if player's tool is nether star:
