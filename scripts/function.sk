@@ -143,32 +143,32 @@ function goKomori(p: player):
 function oniLevelUp(n: number):
     if {_n} is 0:
         execute console command "effect clear @a[team=oni]"
-        execute console command "effect give @a[team=oni] speed 1000000 0 true"
         execute console command "replaceitem entity @a[team=oni] armor.head minecraft:leather_helmet{display:{color:16777215}}"
         execute console command "replaceitem entity @a[team=oni] armor.chest minecraft:leather_chestplate{display:{color:16777215}}"
         execute console command "replaceitem entity @a[team=oni] armor.legs minecraft:leather_leggings{display:{color:16777215}}"
         execute console command "replaceitem entity @a[team=oni] armor.feet minecraft:leather_boots{display:{color:16777215}}"
+        execute console command "effect give @a[team=oni] speed 1000000 0 true"
     if {_n} is 1:
         execute console command "effect clear @a[team=oni]"
-        execute console command "effect give @a[team=oni] speed 1000000 1 true"
         execute console command "replaceitem entity @a[team=oni] armor.head minecraft:leather_helmet{display:{color:16716820}}"
         execute console command "replaceitem entity @a[team=oni] armor.chest minecraft:leather_chestplate{display:{color:16716820}}"
         execute console command "replaceitem entity @a[team=oni] armor.legs minecraft:leather_leggings{display:{color:16716820}}"
         execute console command "replaceitem entity @a[team=oni] armor.feet minecraft:leather_boots{display:{color:16716820}}"
+        execute console command "effect give @a[team=oni] speed 1000000 1 true"
     if {_n} is 2:
         execute console command "effect clear @a[team=oni]"
-        execute console command "effect give @a[team=oni] speed 1000000 2 true"
         execute console command "replaceitem entity @a[team=oni] armor.head minecraft:leather_helmet{display:{color:16716820}}"
         execute console command "replaceitem entity @a[team=oni] armor.chest minecraft:leather_chestplate{display:{color:16716820}}"
         execute console command "replaceitem entity @a[team=oni] armor.legs minecraft:leather_leggings{display:{color:16716820}}"
         execute console command "replaceitem entity @a[team=oni] armor.feet minecraft:leather_boots{display:{color:16716820}}"
+        execute console command "effect give @a[team=oni] speed 1000000 2 true"
     if {_n} is 3:
         execute console command "effect clear @a[team=oni]"
-        execute console command "effect give @a[team=oni] speed 1000000 3 true"
         execute console command "replaceitem entity @a[team=oni] armor.head minecraft:diamond_helmet"
         execute console command "replaceitem entity @a[team=oni] armor.chest minecraft:diamond_chestplate"
         execute console command "replaceitem entity @a[team=oni] armor.legs minecraft:diamond_leggings"
         execute console command "replaceitem entity @a[team=oni] armor.feet minecraft:diamond_boots"
+        execute console command "effect give @a[team=oni] speed 1000000 3 true"
     if {_n} is 4:
         execute console command "effect clear @a[team=oni]"
         execute console command "replaceitem entity @a[team=oni] armor.head minecraft:leather_helmet{display:{color:16777215}}"

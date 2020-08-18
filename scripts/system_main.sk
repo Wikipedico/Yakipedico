@@ -66,7 +66,7 @@ on smelt:
             broadcast "&b>焼きおにぎり &r悪霊が弱体化しました。"
             stop
         broadcast "<&4%{oni::*}%&r> &4ｳﾞｫｫｫｫｫｫｵ!!!"
-        oniLevelUp(%{oniLevel}%)
+        oniLevelUp({oniLevel})
         wait 60 second
         oniLevelUp(0)
 
