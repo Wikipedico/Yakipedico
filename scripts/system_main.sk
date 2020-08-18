@@ -7,8 +7,7 @@ on chat:
 on damage:
     if attacker is {oni::*}:
         if victim is {nige::*}:
-            if {oniOko} is not true:
-                touchedByOni(victim)
+            touchedByOni(victim)
     if attacker is {nige::*}:
         if victim is {oni::*}:
             if {oniOko} is true:
