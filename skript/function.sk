@@ -32,11 +32,8 @@ function huriwake():
             add loop-player to {tyuusen::*}
     if {tyuusen::*} is set:
         loop all players:
-            if block under loop-player is gold block:
-                becomeNige(loop-player)
-                becomeOni(random player out of loop-player)
-            else:
-                becomeNige(loop-player)
+            becomeNige(loop-player)
+        becomeOni(random player out of {tyuusen::*})
     else:
         broadcast "[Error] 抽選対象がいません"
 
@@ -44,6 +41,7 @@ function becomeOni(p: player):
     execute console command "team join oni %{_p}%"
     execute console command "tp %{_p}% 147 110 -142"
     add {_p} to {oni::*}
+    broadcast "[システム] 今回の鬼は %{_p}% です"
 
 function becomeNige(p: player):
     execute console command "team leave %{_p}%"
