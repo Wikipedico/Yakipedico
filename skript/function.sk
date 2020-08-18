@@ -1,4 +1,5 @@
 function gameStart():
+    set {gameStatus} to 1
     set {timer} to true
     execute console command "scoreboard players set lobby lobby 1"
     execute console command "effect clear @a"
@@ -19,6 +20,7 @@ function gameStart():
 
 
 function gameEnd():
+    set {gameStatus} to 0
     set {timer} to false
     execute console command "effect clear @a"
     execute console command "spawnpoint @a 137 36 -126"

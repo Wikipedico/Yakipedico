@@ -1,4 +1,7 @@
-
+on chat:
+    if {gameStatus} is 1:
+        cancel event
+        message "[システム] ゲーム中はチャットの使用ができません"
 
 
 on damage:
@@ -33,6 +36,6 @@ on right click on oak sign:
 
 
 every 1 tick:
-    #execute console command "scoreboard players set 残り時間 info %{timer}%"
-    #execute console command "scoreboard players set 残り人数 info %{surviver}%"
-    #execute console command "scoreboard players set 焼却トーテム数 info %{totem}%"
+    execute console command "scoreboard players set 残り時間 info %{timer}%"
+    execute console command "scoreboard players set 残り人数 info %{surviver}%"
+    execute console command "scoreboard players set 焼却トーテム数 info %{totem}%"
