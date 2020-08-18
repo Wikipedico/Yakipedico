@@ -1,7 +1,7 @@
 on chat:
     if {gameStatus} is 1:
         cancel event
-        message "[システム] ゲーム中はチャットの使用ができません" to player
+        message "&b>Game &rゲーム中はチャットの使用ができません" to player
 
 
 on damage:
@@ -29,8 +29,13 @@ on death of cat:
 on right click:
     if player's tool is stick named "cat spawn":
         add location of block above event-block to {catPoint::*}
-        broadcast ">System %location of block above event-block% を {catPoint::*} に追加しました"
+        broadcast "&a>System &r%location of block above event-block% を {catPoint::*} に追加しました"
 
+on right click on oak sign:
+    if player's tool is nether star:
+        hukkatu(player)
+    else:
+        message "&b>Game &rネザースターを手に持ってクリックしてください" to player
 
 on inventory click:
     if event-item is gray stained glass pane:
@@ -46,29 +51,30 @@ on smelt:
             execute console command "replaceitem entity @a[team=oni] armor.chest minecraft:leather_chestplate{display:{color:16716820}}"
             execute console command "replaceitem entity @a[team=oni] armor.legs minecraft:leather_leggings{display:{color:16716820}}"
             execute console command "replaceitem entity @a[team=oni] armor.feet minecraft:leather_boots{display:{color:16716820}}"
+            broadcast "<&4%{oni::*}%&r> &4ｳﾞｫｫｫｫｫｫｵ!!!"
+            broadcast "&b>Game &r悪霊の移動速度が上昇しました。現在のレベル：1"
         if {totem} is 10:
             execute console command "effect give @a[team=oni] speed 1000000 2 true"
+            broadcast "<&4%{oni::*}%&r> &4ｳﾞｫｫｫｫｫｫｵ!!!"
+            broadcast "&b>Game &r悪霊の移動速度が上昇しました。現在のレベル：2"
         if {totem} is 15:
             execute console command "effect give @a[team=oni] speed 1000000 3 true"
             execute console command "replaceitem entity @a[team=oni] armor.head minecraft:diamond_helmet"
             execute console command "replaceitem entity @a[team=oni] armor.chest minecraft:diamond_chestplate"
             execute console command "replaceitem entity @a[team=oni] armor.legs minecraft:diamond_leggings"
             execute console command "replaceitem entity @a[team=oni] armor.feet minecraft:diamond_boots"
+            broadcast "<&4%{oni::*}%&r> &4ｳﾞｫｫｫｫｫｫｵ!!!"
+            broadcast "&b>Game &r悪霊の移動速度が上昇しました。現在のレベル：3"
         if {totem} is 20:
             execute console command "effect clear @a[team=oni]"
             execute console command "replaceitem entity @a[team=oni] armor.head minecraft:leather_helmet{display:{color:16777215}}"
             execute console command "replaceitem entity @a[team=oni] armor.chest air"
             execute console command "replaceitem entity @a[team=oni] armor.legs air"
             execute console command "replaceitem entity @a[team=oni] armor.feet air"
+            broadcast "<&4%{oni::*}%&r> &4ｳﾞｫｫ…"
+            broadcast "&b>Game &r悪霊が弱体化しました。"
             set {oniOko} to true
 
-
-
-on right click on oak sign:
-    if player's tool is nether star:
-        hukkatu(player)
-    else:
-        message "&b>Game &rネザースターを手に持ってクリックしてください" to player
 
 
 

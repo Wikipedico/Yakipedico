@@ -50,6 +50,8 @@ function gameEnd():
     execute console command "kill @e[type=bat]"
     execute console command "kill @e[type=item]"
     execute console command "setblock 103 1 -104 air"
+    loop all players:
+        set loop-player's gamemode to adventure
 
 
 function huriwake():
