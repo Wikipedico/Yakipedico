@@ -3,9 +3,12 @@ on skript load:
     set {timer} to false
     set {time} to 900
     set {huriwake} to false
+    set {oniOko} to false
     reset {oni::*}
     reset {nige::*}
     reset {tyuusen::*}
+    execute console command "scoreboard players set lobby lobby 0"
+    execute console command "scoreboard objectives setdisplay sidebar.team.blue"
 
 
 on first join:
@@ -15,6 +18,7 @@ on first join:
 
 on join:
     set the join message to "&e%player% joined the game"
+    set player's gamemode to adventure
 
 
 on quit:

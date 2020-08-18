@@ -1,49 +1,91 @@
 function gameStart():
     set {timer} to true
+    execute console command "scoreboard players set lobby lobby 1"
+    execute console command "effect clear @a"
+    execute console command "tp @a[team=nige] 128 100 -209"
+    execute console command "tp @a[team=oni] @e[type=armor_stand,tag=tp_oni,sort=random,limit=1]"
+    execute console command "scoreboard objectives setdisplay sidebar.team.blue info"
     set {surviver}  to online player count
     reduce {surviver} by amount of {oni::*}
     loop all players:
         set {status.%loop-player%} to "alive"
+        set loop-player's gamemode to adventure
     while {timer} is true:
         reduce {time} by 1
         if {time} is 0:
             winOni()
-            set {timer} is false
+            set {timer} to false
         wait 1 second
 
 
 function gameEnd():
     set {timer} to false
+    execute console command "effect clear @a"
+    execute console command "spawnpoint @a 137 36 -126"
+    execute console command "scoreboard players set lobby lobby 0"
+    execute console command "scoreboard objectives setdisplay sidebar.team.blue"
 
 
 function huriwake():
     loop all players:
-        if loop-player is standing on golden block
+        if block under loop-player is gold block:
             add player to {tyuusen::*}
     if {tyuusen::*} is set:
-        add random 1 of {tyuusen::*} to {oni::*}
-        add all player to {nige::*}
+        set {random} to random number between 0 to amount of {tyuusen::*}
+        add {tyuusen::%{random}%} to {oni::*}
+        loop all players:
+            add loop-player to {nige::*}
         remove {oni::*} from {nige::*}
         set {huriwake} to true
         broadcast "[システム] 今回の鬼は%{oni::*}%です"
     else:
         broadcast "[Error] 抽選対象がいません"
 
+function becomeOni():
+    execute console command "team join oni @a[team=oni]"
+    execute console command "tp %{oni::*}% 147 110 -142"
+
+function becomeNige():
+    execute console command "tema join nige @a[tema=nige]"
+
 
 function touchedByOni(p: player):
-    set {status.%{_p}%} to "death"
-    teleport {_p} to {koumori}
-    reduce {surviver} by 1
-    if {surviver} is 0:
-        winOni()
+    if {_p}'s tool is totem of undying:
+        remove 1 of totem of undying from {_p}
+        execute console command "effect give @a[team=oni] blindness 15 100 true"
+        execute console command "effect give @a[team=oni] slowness 15 100 true"
+    else:
+        set {status.%{_p}%} to "death"
+        execute console command "tp {_p} 137 35 -126"
+        broadcast "[システム] %{_p}% が捕まりました"
+        clear {_p}
+        reduce {surviver} by 1
+        if {surviver} is 0:
+            winOni()
+
+
+function touchedByNige(p: player):
+    drop a diamond at {_p}'s location
+    execute console command "spawnpoint %{_p}% 125 123 -158"
+    kill {_p}
 
 
 function hukkatu(p: player):
     set {status.%{_p}%} to "alive"
-    teleport {_p} to {respawnNige}
+    execute console command "tp %{_p}% 128 100 -211"
+    execute console command "effect give %{_p}% invisibility 10 10 true"
+    remove 1 of nether star from {_p}
     add 1 to {surviver}
 
 
 function winOni():
     broadcast "[システム] "
+    execute console command "tp @a[team=oni] 125 123 -158"
+    execute console command "tp @a[team=nige] 125 123 -151"
+    gameEnd()
+
+function winNige():
+    broadcast "[システム] "
+    execute console command "tp @a[team=nige] 125 123 -158"
+    execute console command "tp @a[team=oni] 125 123 -152"
     gameEnd()

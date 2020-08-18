@@ -1,7 +1,7 @@
 {
     "criteria": {
         "ice_attack": {
-            "trigger": "minecraft:entity_hurt_player",
+            "trigger": "minecraft:impossible",
             "conditions": {
                   "damage": {
                       "type": {
@@ -11,7 +11,7 @@
                         }
                     }
                 }
-               
+
             }
         }
     },

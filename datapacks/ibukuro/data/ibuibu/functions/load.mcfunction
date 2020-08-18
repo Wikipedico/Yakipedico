@@ -9,6 +9,12 @@ tp @a 146 103 -131
 # とりまアドベ
 gamemode adventure @a
 
+# gamerule
+gamerule announceAdvancements false
+gamerule doDaylightCycle false
+gamerule doWeatherCycle false
+gamerule sendCommandFeedback false
+gamerule spawnRadius 1
 
 # スコア定義と初期化
 scoreboard objectives add lobby dummy
@@ -43,11 +49,9 @@ scoreboard players reset @a timer_display
 scoreboard objectives add timer_20 dummy
 scoreboard players set timer_20 timer_20 20
 
-
 # チーム消す
 team remove nige
 team remove oni
-
 
 # チームの追加と設定
 team add oni
@@ -62,6 +66,3 @@ team modify nige color blue
 team modify nige collisionRule never
 team modify nige friendlyFire false
 team modify nige seeFriendlyInvisibles true
-
-
-
