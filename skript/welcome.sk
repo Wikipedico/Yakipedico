@@ -4,9 +4,9 @@ on skript load:
     set {time} to 900
     set {huriwake} to false
     set {oniOko} to false
-    reset {oni::*}
-    reset {nige::*}
-    reset {tyuusen::*}
+    delete {oni::*}
+    delete {nige::*}
+    delete {tyuusen::*}
     execute console command "scoreboard players set lobby lobby 0"
     execute console command "scoreboard objectives setdisplay sidebar.team.blue"
 

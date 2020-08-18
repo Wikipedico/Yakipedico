@@ -29,9 +29,9 @@ function gameEnd():
 function huriwake():
     loop all players:
         if block under loop-player is gold block:
-            add player to {tyuusen::*}
+            add loop-player to {tyuusen::*}
     if {tyuusen::*} is set:
-        set {random} to random number between 0 to amount of {tyuusen::*}
+        set {random} to random number between 1 to amount of {tyuusen::*}
         add {tyuusen::%{random}%} to {oni::*}
         loop all players:
             add loop-player to {nige::*}
