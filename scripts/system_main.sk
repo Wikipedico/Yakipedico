@@ -12,6 +12,15 @@ on damage:
         if victim is {oni::*}:
             if {oniOko} is true:
                 touchedByNige(victim)
+            else:
+                cancel event
+    if victim is cat:
+        cancel event
+        chance of 30%:
+            drop totem of undying
+        delete event-entity
+
+
 
 
 
@@ -38,6 +47,14 @@ on right click on oak sign:
 
 
 every 1 tick:
-    execute console command "scoreboard players set 残り時間 info %{time}%"
-    execute console command "scoreboard players set 残り人数 info %{surviver}%"
-    execute console command "scoreboard players set 焼却トーテム数 info %{totem}%"
+    #execute console command "scoreboard players set 残り時間 info %{time}%"
+    #execute console command "scoreboard players set 残り人数 info %{surviver}%"
+    #execute console command "scoreboard players set 焼却トーテム数 info %{totem}%"
+
+every 5 second:
+    if {gameStatus} is 1:
+        if {amountCat} is 5:
+            stop
+        else:
+            spawn 1 cat at {spawnBlock::%{randomBlock}%}
+            add 1 to {amountCat}

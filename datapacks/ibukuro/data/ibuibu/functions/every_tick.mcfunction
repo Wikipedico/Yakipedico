@@ -7,7 +7,7 @@
 
 # ロビー
 execute if score lobby lobby matches 0 run effect give @a resistance 1000000 255 true
-execute if score lobby lobby matches 0 run effect give @a saturation 1000000 255 true
+effect give @a saturation 1000000 255 true
 execute if score lobby lobby matches 0 run effect give @a night_vision 1000000 255 true
 
 # かまど
