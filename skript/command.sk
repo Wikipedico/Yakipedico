@@ -33,7 +33,7 @@ command /joinCount:
     permission: skript.admin
     permission message:Admin専用コマンドです。
     trigger:
-        message "&2>JoinCount &r現在の接続人数は &6%online player count% &r人で、累計接続人数は &6%{joinCount}% &r人です"
+        message "&2>JoinCount &r現在の接続人数は &6%online player count% &r人、累計接続人数は &6%{joinCount}% &r人です"
 
 
 command /become <text> [<player>]:

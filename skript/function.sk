@@ -34,6 +34,7 @@ function huriwake():
         loop all players:
             becomeNige(loop-player)
         becomeOni(random player out of {tyuusen::*})
+        set {huriwake} to true
     else:
         broadcast "[Error] 抽選対象がいません"
 
