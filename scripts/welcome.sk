@@ -8,7 +8,7 @@ on skript load:
     set {amountCat} to 0
     set {gameStatus} to 0
     loop all players:
-        reset {yaku.%loop-player%}
+        set {yaku.%loop-player%} to "none"
     delete {oni::*}
     delete {nige::*}
     delete {tyuusen::*}
@@ -29,7 +29,7 @@ on join:
     if {gameStatus} is 1:
         goKomori(player)
     else:
-        reset {yaku.%player%}
+        set {yaku.%player%} to "none"
 
 
 on quit:

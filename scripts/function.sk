@@ -54,6 +54,7 @@ function gameEnd():
     execute console command "setblock 103 1 -104 air"
     loop all players:
         set loop-player's gamemode to adventure
+        set {yaku.%loop-player%} to "none"
 
 
 function huriwake():
