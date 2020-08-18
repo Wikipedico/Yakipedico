@@ -73,6 +73,7 @@ function becomeOni(p: player):
     execute console command "replaceitem entity %{_p}% armor.chest minecraft:leather_chestplate{display:{color:16777215}}"
     execute console command "replaceitem entity %{_p}% armor.legs minecraft:leather_leggings{display:{color:16777215}}"
     execute console command "replaceitem entity %{_p}% armor.feet minecraft:leather_boots{display:{color:16777215}}"
+    execute console command "effect give %{_p}% speed 1000000 0 true"
     broadcast "&b>Game &r今回の鬼は &4%{_p}% &rです"
 
 function becomeNige(p: player):

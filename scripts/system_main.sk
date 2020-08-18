@@ -41,15 +41,15 @@ on smelt:
     if ore slot of event-block is totem of undying:
         add 1 to {totem}
         if {totem} is 5:
-            execute console command "effect give @a[team=oni] speed 1000000 0 true"
+            execute console command "effect give @a[team=oni] speed 1000000 1 true"
             execute console command "replaceitem entity @a[team=oni] armor.head minecraft:leather_helmet{display:{color:16716820}}"
             execute console command "replaceitem entity @a[team=oni] armor.chest minecraft:leather_chestplate{display:{color:16716820}}"
             execute console command "replaceitem entity @a[team=oni] armor.legs minecraft:leather_leggings{display:{color:16716820}}"
             execute console command "replaceitem entity @a[team=oni] armor.feet minecraft:leather_boots{display:{color:16716820}}"
         if {totem} is 10:
-            execute console command "effect give @a[team=oni] speed 1000000 1 true"
-        if {totem} is 15:
             execute console command "effect give @a[team=oni] speed 1000000 2 true"
+        if {totem} is 15:
+            execute console command "effect give @a[team=oni] speed 1000000 3 true"
             execute console command "replaceitem entity @a[team=oni] armor.head minecraft:diamond_helmet"
             execute console command "replaceitem entity @a[team=oni] armor.chest minecraft:diamond_chestplate"
             execute console command "replaceitem entity @a[team=oni] armor.legs minecraft:diamond_leggings"
