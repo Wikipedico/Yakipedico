@@ -103,5 +103,4 @@ function spawnCat():
         if loop-block is air:
             set {_loopBlockLocation} to loop-block
             if block under {_loopBlockLocation} is spruce planks:
-                set {spawnBlock::*} to loop-block
-    set {randomBlock} to random number between 1 and amount of {spawnBlock::*}
+                add loop-block to {spawnBlock::*}
