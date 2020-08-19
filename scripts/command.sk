@@ -5,7 +5,7 @@ command /start:
         if {huriwake} is true:
             gameStart()
         else:
-            message "[Error] 役振りが完了していません" to player
+            message "&l&c>Error 役振りが完了していません" to player
 
 command /zikan <number>:
     permission: skript.admin
@@ -33,7 +33,7 @@ command /joinCount:
         message "&2>JoinCount &r現在の接続人数は &6%online player count% &r人、累計接続人数は &6%{joinCount}% &r人です" to player
 
 
-command /become <text> [<player>]:
+command /natto-become <text> [<player>]:
     permission: skript.admin
     permission message:Admin専用コマンドです。
     trigger:
@@ -51,14 +51,14 @@ command /become <text> [<player>]:
             message "/become <oni/nige> [<player>]" to player
 
 
-command /resetcatloca:
+command /natto-resetcatloca:
     permission: skript.admin
     permission message:Admin専用コマンドです。
     trigger:
         delete {catPoint::*}
-        broadcast ">System {catPoint::*}をリセットしました"
+        broadcast "&l&a>System &r{catPoint::*}をリセットしました"
 
-command /definecatloca:
+command /natto-definecatloca:
     permission: skript.admin
     permission message:Admin専用コマンドです。
     trigger:
@@ -66,7 +66,7 @@ command /definecatloca:
         give a stick named "cat spawn del" to player
 
 
-command /win <text>:
+command /natto-win <text>:
     permission: skript.admin
     permission message:Admin専用コマンドです。
     trigger:
@@ -74,3 +74,53 @@ command /win <text>:
             winNige()
         if arg-1 is "oni":
             winOni()
+
+command /book:
+    permission: skript.admin
+    permission message:Admin専用コマンドです。
+    trigger:
+        make player execute command "function ibuibu:book"
+
+command /admin [<text>] [<player>]:
+    permission: skript.admin
+    permission message:Admin専用コマンドです。
+    trigger:
+        if arg-1 is not set:
+            if {admin.%player%} is true:
+                adminLeave(player)
+                message "&l&a>System &r%player% がadminから脱退しました" to {admin::*}
+                message "&l&a>System &radminから脱退しました" to player
+            else:
+                adminJoin(player)
+                message "&l&a>System &r%player% がadminに加入しました" to {admin::*}
+
+        if arg-1 is "join":
+            if arg-2 is set:
+                if {admin.%arg-2%} is false:
+                    adminJoin(arg-2)
+                    message "&l&a>System &r%player% があなたをadminに加入させました" to arg-2
+                    message "&l&a>System &r%arg-2% がadminに加入しました" to {admin::*}
+                else:
+                    message "&l&a>System &r%arg-2% はすでにadminです" to player
+            else:
+                if {admin.%player%} is false:
+                    adminJoin(player)
+                    message "&l&a>System &r%player% がadminに加入しました" to {admin::*}
+                else:
+                    message "&l&a>System &r%player% はすでにadminです" to player
+
+        if arg-1 is "leave":
+            if arg-2 is set:
+                if {admin.%arg-2%} is true:
+                    adminLeave(arg-2)
+                    message "&l&a>System &r%player% があなたをadminから脱退させました" to arg-2
+                    message "&l&a>System &r%arg-2% がadminから脱退しました" to {admin::*}
+                else:
+                    message "&l&a>System &r%arg-2% はすでにadminではありません" to player
+            else:
+                if {admin.%arg-2%} is true:
+                    adminLeave(player)
+                    message "&l&a>System &r%player% がadminから脱退しました" to {admin::*}
+                    message "&l&a>System &radminから脱退しました" to player
+                else:
+                    message "&l&a>System &r%player% はすでにadminではありません" to player

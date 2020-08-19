@@ -1,4 +1,6 @@
 on skript load:
+    broadcast "&l&a>System &2Reloading..."
+    set {ver} to "1.1"
     set {status} to 0
     set {timer} to false
     set {time} to 900
@@ -16,6 +18,9 @@ on skript load:
     execute console command "scoreboard objectives setdisplay sidebar.team.blue"
     execute console command "setblock 103 1 -104 air"
     execute console command "clear @a"
+    loop all players:
+        adminLeave(loop-player)
+    broadcast "&l&a>System &2Reloaded Successfully!"
 
 
 on first join:
@@ -24,8 +29,19 @@ on first join:
 
 
 on join:
-    set the join message to "&e%player% joined the game"
     set player's gamemode to adventure
+    execute console command "admin leave %player%"
+    message " " to player
+    message "&l&7[注意事項]" to player
+    message " " to player
+    message "&7 ・軽量化MOD以外のMODの導入は認められていません。" to player
+    message "&7 ・ゲーム開始前に確実にルールを把握してください。" to player
+    message " " to player
+    message "&7 ルール ： &n>ここをクリック<<link:https://www.notion.so/Yakipedico-4d394f48d658408abc6c99e206e16140>" to player
+    message " " to player
+    message "&l&7[ver.]" to player
+    message "&7 %{ver}%" to player
+    message " " to player
     if {gameStatus} is 1:
         goKomori(player)
     else:
@@ -33,7 +49,8 @@ on join:
 
 
 on quit:
-    set the quit message to "&e%player% left the game"
+    if {admin.%player%} is true:
+        adminLeave(player)
     if {gameStatus} is 1:
         reduce {surviver} by 1
         if {surviver} is 0:

@@ -54,6 +54,7 @@ scoreboard players set timer_20 timer_20 20
 # チーム消す
 team remove nige
 team remove oni
+team remove admin
 
 # チームの追加と設定
 team add oni
@@ -68,6 +69,12 @@ team modify nige color blue
 team modify nige collisionRule never
 team modify nige friendlyFire false
 team modify nige seeFriendlyInvisibles true
+
+team add admin
+team modify admin collisionRule never
+team modify admin color dark_red
+team modify admin friendlyFire false
+team modify admin nametagVisibility always
 
 
 

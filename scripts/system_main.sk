@@ -1,7 +1,7 @@
 on chat:
     if {gameStatus} is 1:
         cancel event
-        message "&b>焼きおにぎり &rゲーム中はチャットの使用ができません" to player
+        message "&l&b>焼きおにぎり &rゲーム中はチャットの使用ができません" to player
 
 
 on damage:
@@ -27,20 +27,31 @@ on death of cat:
     hide event-entity
     reduce {amountCat} by 1
 
+on death of chicken:
+    give nether star to attacker
+
+on pick up:
+    if event-item is nether star:
+        if player has nether star:
+            cancel event
+
+on item merge of nether star:
+    cancel event
+
 
 on right click:
     if player's tool is stick named "cat spawn":
         add location of block above event-block to {catPoint::*}
-        broadcast "&a>System &r%location of block above event-block% を {catPoint::*} に追加しました"
+        broadcast "&l&a>System &r%location of block above event-block% を {catPoint::*} に追加しました"
     if player's tool is stick named "cat spawn del":
         remove location of block above event-block from {catPoint::*}
-        broadcast ">System %location of target block% を {catPoint::*} から削除しました"
+        broadcast "&l&a>System %location of target block% を {catPoint::*} から削除しました"
 
 on right click on oak sign:
     if player's tool is nether star:
         hukkatu(player)
     else:
-        message "&b>焼きおにぎり &rネザースターを手に持ってクリックしてください" to player
+        message "&l&b>焼きおにぎり &rネザースターを手に持ってクリックしてください" to player
 
 on inventory click:
     if event-item is gray stained glass pane:
@@ -52,23 +63,23 @@ on smelt:
         add 1 to {totem}
         if {totem} is 5:
             set {oniLevel} to 1
-            broadcast "&b>焼きおにぎり &r悪霊のレベルが上がりました。現在のレベル：1"
+            broadcast "&l&b>焼きおにぎり &r悪霊のレベルが上がりました。現在のレベル：1"
         if {totem} is 10:
             set {oniLevel} to 2
-            broadcast "&b>焼きおにぎり &r悪霊のレベルが上がりました。現在のレベル：2"
+            broadcast "&l&b>焼きおにぎり &r悪霊のレベルが上がりました。現在のレベル：2"
         if {totem} is 15:
             set {oniLevel} to 3
-            broadcast "&b>焼きおにぎり &r悪霊のレベルが上がりました。現在のレベル：3"
+            broadcast "&l&b>焼きおにぎり &r悪霊のレベルが上がりました。現在のレベル：3"
         if {totem} is 20:
             set {oniLevel} to 4
             oniLevelUp(4)
             broadcast "<&4%{oni::*}%&r> &4ｳﾞｫｫ…"
-            broadcast "&b>焼きおにぎり &r悪霊が弱体化しました。"
+            broadcast "&l&b>焼きおにぎり &r悪霊が弱体化しました。"
             stop
         broadcast "<&4%{oni::*}%&r> &4ｳﾞｫｫｫｫｫｫｵ!!!"
         oniLevelUp({oniLevel})
         wait 60 second
-        oniLevelUp(0)
+        oniLevelUp(-1)
 
 
 
@@ -81,7 +92,7 @@ every 1 tick in "world":
 
 every 5 second in "world":
     if {gameStatus} is 1:
-        if {amountCat} is 10:
+        if {amountCat} is 20:
             stop
         else:
             set {_random} to random integer between amount of {catPoint::*} and 1

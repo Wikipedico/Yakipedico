@@ -21,6 +21,9 @@ function gameStart():
     execute console command "effect clear @a"
     execute console command "tp @a[team=nige] 128 100 -209 -180 0"
     execute console command "scoreboard objectives setdisplay sidebar.team.blue info"
+    execute console command "scoreboard objectives setdisplay sidebar.team.dark_red info"
+    execute console command "setblock 110 1 -97 minecraft:spawner{MaxNearbyEntities:6s,RequiredPlayerRange:16s,SpawnCount:6s,SpawnData:{Health:1.0f,id:""minecraft:bat""},MaxSpawnDelay:200s,Delay:169s,SpawnRange:4s,MinSpawnDelay:100s,SpawnPotentials:[{Entity:{Health:1.0f,id:""minecraft:bat""},Weight:1}]}"
+    execute console command "setblock 95 1 -112 minecraft:spawner{MaxNearbyEntities:6s,RequiredPlayerRange:16s,SpawnCount:6s,SpawnData:{Health:1.0f,id:""minecraft:bat""},MaxSpawnDelay:200s,Delay:169s,SpawnRange:4s,MinSpawnDelay:100s,SpawnPotentials:[{Entity:{Health:1.0f,id:""minecraft:bat""},Weight:1}]}"
     execute console command "setblock 103 1 -104 minecraft:spawner{MaxNearbyEntities:6s,RequiredPlayerRange:16s,SpawnCount:6s,SpawnData:{Health:1.0f,id:""minecraft:bat""},MaxSpawnDelay:200s,Delay:169s,SpawnRange:4s,MinSpawnDelay:100s,SpawnPotentials:[{Entity:{Health:1.0f,id:""minecraft:bat""},Weight:1}]}"
     wait 1 tick
     execute console command "setblock 113 96 -266 minecraft:furnace[facing=south,lit=false]{CookTime:0s,BurnTime:0s,Items:[],RecipesUsedSize:0s,CookTimeTotal:0s}"
@@ -28,6 +31,7 @@ function gameStart():
     execute console command "setblock 138 125 -235 minecraft:furnace[facing=west,lit=false]{CookTime:0s,BurnTime:0s,Items:[],RecipesUsedSize:0s,CookTimeTotal:0s}"
     set {surviver}  to online player count
     reduce {surviver} by amount of {oni::*}
+    reduce {surviver} by amount of {admin::*}
     set {oniStart} to {time}
     reduce {oniStart} by 15
     execute console command "setblock 113 96 -266 minecraft:furnace[facing=south,lit=false]{CookTime:0s,BurnTime:0s,Items:[],RecipesUsedSize:0s,CookTimeTotal:0s}"
@@ -54,6 +58,8 @@ function gameEnd():
     execute console command "kill @e[type=cat]"
     execute console command "kill @e[type=bat]"
     execute console command "kill @e[type=item]"
+    execute console command "setblock 110 1 -97 air"
+    execute console command "setblock 95 1 -112 air"
     execute console command "setblock 103 1 -104 air"
     loop all players:
         set loop-player's gamemode to adventure
@@ -70,23 +76,30 @@ function huriwake():
         becomeOni(random player out of {tyuusen::*})
         set {huriwake} to true
     else:
-        broadcast "&c>Error &r抽選対象がいません"
+        broadcast "&l&c>Error &r抽選対象がいません"
 
 function becomeOni(p: player):
+    if {admin.%{_p}%} is true:
+        broadcast "&l&c>Error &r%{_p}%は参加者ではありません"
+        stop
     execute console command "team join oni %{_p}%"
     execute console command "tp %{_p}% 112 76 -57 -90 0"
     remove {_p} from {nige::*}
+    remove {_p} from {oni::*}
     set {yaku.%{_p}%} to "oni"
     add {_p} to {oni::*}
     execute console command "replaceitem entity %{_p}% armor.head minecraft:leather_helmet{display:{color:16777215}}"
     execute console command "replaceitem entity %{_p}% armor.chest minecraft:leather_chestplate{display:{color:16777215}}"
     execute console command "replaceitem entity %{_p}% armor.legs minecraft:leather_leggings{display:{color:16777215}}"
     execute console command "replaceitem entity %{_p}% armor.feet minecraft:leather_boots{display:{color:16777215}}"
-    broadcast "&b>焼きおにぎり &r今回の鬼は &4%{_p}% &rです"
+    broadcast "&l&b>焼きおにぎり &r今回の鬼は &4%{_p}% &rです"
 
 function becomeNige(p: player):
+    if {admin.%{_p}%} is true:
+        stop
     execute console command "team join nige %{_p}%"
     remove {_p} from {oni::*}
+    remove {_p} from {nige::*}
     set {yaku.%{_p}%} to "nige"
     add {_p} to {nige::*}
 
@@ -106,28 +119,29 @@ function touchedByOni(p: player):
 function touchedByNige(p: player):
     drop a diamond at {_p}'s location
     set {_p}'s gamemode to spectator
-    broadcast "&b>焼きおにぎり &4%{_p}% &rが倒されました"
+    broadcast "&l&b>焼きおにぎり &4%{_p}% &rが倒されました"
 
 
 function hukkatu(p: player):
     set {status.%{_p}%} to "alive"
     execute console command "tp %{_p}% 128 100 -209 -180 0"
     execute console command "effect give %{_p}% invisibility 10 10 true"
+    execute console command "clear %{_p}%"
     remove 1 of nether star from {_p}
     add 1 to {surviver}
     becomeNige({_p})
-    message "&b>焼きおにぎり &c%{_p}% &rが復活しました" to {nige::*}
+    message "&l&b>焼きおにぎり &c%{_p}% &rが復活しました" to {nige::*} and {admin::*}
 
 
 function winOni():
-    broadcast "&b>焼きおにぎり &r悪霊の勝利！！"
+    broadcast "&l&b>焼きおにぎり &r悪霊の勝利！！"
     broadcast "[悪霊 : %{oni::*}%]"
     execute console command "tp @a[team=oni] 129 76 -57 90 0"
     execute console command "tp @a[team=nige] 112 76 -57 -90 0"
     gameEnd()
 
 function winNige():
-    broadcast "&b>焼きおにぎり &r人間の勝利！！"
+    broadcast "&l&b>焼きおにぎり &r人間の勝利！！"
     broadcast "[人間 : %{nige::*}%]"
     execute console command "tp @a[team=nige] 129 76 -57 90 0"
     execute console command "tp @a[team=oni] 112 76 -57 -90 0"
@@ -136,7 +150,8 @@ function winNige():
 function goKomori(p: player):
     set {status.%{_p}%} to "death"
     execute console command "tp %{_p}% 103 2 -104 0 0"
-    broadcast "&b>焼きおにぎり &c%{_p}% &rが捕まりました"
+    execute console command "clear %{_p}%"
+    broadcast "&l&b>焼きおにぎり &c%{_p}% &rが捕まりました"
     clear {_p}
 
 
@@ -183,3 +198,18 @@ function oniLevelUp(n: number):
         execute console command "replaceitem entity @a[team=oni] armor.feet air"
         execute console command "setblock 113 96 -266 air"
         execute console command "setblock 138 125 -235 air"
+
+function adminJoin(p: player):
+    set {admin.%{_p}%} to true
+    remove {_p} from {admin::*}
+    add {_p} to {admin::*}
+    set the chat name of {_p} to "&4[運営] &r%name of {_p}%"
+    set the display name of {_p} to "&4[運営] &r%name of {_p}%"
+    execute console command "team join admin %{_p}%"
+
+function adminLeave(p: player):
+    set {admin.%{_p}%} to false
+    remove {_p} from {admin::*}
+    clear the chat name of {_p}
+    clear the display name of {_p}
+    execute console command "team leave %{_p}%"
