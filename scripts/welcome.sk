@@ -1,6 +1,6 @@
 on skript load:
     broadcast "&l&a>System &2Reloading..."
-    set {ver} to "1.1"
+    set {ver} to "0.2.1 (alpha)"
     set {status} to 0
     set {timer} to false
     set {time} to 900
