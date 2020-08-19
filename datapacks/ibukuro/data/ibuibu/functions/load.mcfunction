@@ -72,7 +72,7 @@ team modify nige seeFriendlyInvisibles true
 
 team add admin
 team modify admin collisionRule never
-team modify admin color dark_red
+team modify admin color green
 team modify admin friendlyFire false
 team modify admin nametagVisibility always
 

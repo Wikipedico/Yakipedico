@@ -21,7 +21,7 @@ function gameStart():
     execute console command "effect clear @a"
     execute console command "tp @a[team=nige] 128 100 -209 -180 0"
     execute console command "scoreboard objectives setdisplay sidebar.team.blue info"
-    execute console command "scoreboard objectives setdisplay sidebar.team.dark_red info"
+    execute console command "scoreboard objectives setdisplay sidebar.team.green info"
     execute console command "setblock 110 1 -97 minecraft:spawner{MaxNearbyEntities:6s,RequiredPlayerRange:16s,SpawnCount:6s,SpawnData:{Health:1.0f,id:""minecraft:bat""},MaxSpawnDelay:200s,Delay:169s,SpawnRange:4s,MinSpawnDelay:100s,SpawnPotentials:[{Entity:{Health:1.0f,id:""minecraft:bat""},Weight:1}]}"
     execute console command "setblock 95 1 -112 minecraft:spawner{MaxNearbyEntities:6s,RequiredPlayerRange:16s,SpawnCount:6s,SpawnData:{Health:1.0f,id:""minecraft:bat""},MaxSpawnDelay:200s,Delay:169s,SpawnRange:4s,MinSpawnDelay:100s,SpawnPotentials:[{Entity:{Health:1.0f,id:""minecraft:bat""},Weight:1}]}"
     execute console command "setblock 103 1 -104 minecraft:spawner{MaxNearbyEntities:6s,RequiredPlayerRange:16s,SpawnCount:6s,SpawnData:{Health:1.0f,id:""minecraft:bat""},MaxSpawnDelay:200s,Delay:169s,SpawnRange:4s,MinSpawnDelay:100s,SpawnPotentials:[{Entity:{Health:1.0f,id:""minecraft:bat""},Weight:1}]}"
@@ -203,8 +203,8 @@ function adminJoin(p: player):
     set {admin.%{_p}%} to true
     remove {_p} from {admin::*}
     add {_p} to {admin::*}
-    set the chat name of {_p} to "&4[運営] &r%name of {_p}%"
-    set the display name of {_p} to "&4[運営] &r%name of {_p}%"
+    set the chat name of {_p} to "&2[運営] &r%name of {_p}%"
+    set the display name of {_p} to "&2[運営] &r%name of {_p}%"
     execute console command "team join admin %{_p}%"
 
 function adminLeave(p: player):
