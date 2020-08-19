@@ -37,7 +37,7 @@ on join:
     message "&7 ・軽量化MOD以外のMODの導入は認められていません。" to player
     message "&7 ・ゲーム開始前に確実にルールを把握してください。" to player
     message " " to player
-    message "&7 ルール ： &n>ここをクリック<<link:https://www.notion.so/Yakipedico-4d394f48d658408abc6c99e206e16140>" to player
+    message "&7 ルール ： &nhttps://www.notion.so/Yakipedico-4d394f48d658408abc6c99e206e16140" to player
     message " " to player
     message "&l&7[ver.]" to player
     message "&7 %{ver}%" to player
