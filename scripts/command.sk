@@ -1,3 +1,64 @@
+command /yakihelp <number>:
+    trigger:
+        if arg-1 is not set:
+            make player execute command "yakihelp 1"
+            stop
+
+        if arg-1 is 1:
+            message "&7=====================================================" to player
+            message "&6&l[HELP] &r&7Page 1 of 3" to player
+            message " " to player
+            message "&e-ゲームの始め方-" to player
+            message " " to player
+            message "1. /huriwake コマンドで鬼を決める" to player
+            message "2. /start コマンドでゲームを開始" to player
+            message "3. ゲームが終了したら /reload で次の試合へ移行" to player
+            message " " to player
+            message "※不具合が起きた場合は /end から /reload で復帰可能" to player
+            message " " to player
+            message ">&n次のページへ<run command:yakihelp 2>" to player
+            message "&7=====================================================" to player
+
+        if arg-1 is 2:
+            message "&7=====================================================" to player
+            message "&6&l[HELP] &r&7Page 2 of 3" to player
+            message " " to player
+            message "&e-各種コマンド-" to player
+            message " " to player
+            message "&a&l/start" to player
+            message "   ゲームを開始する" to player
+            message "&a&l/end" to player
+            message "   ゲームを終了する" to player
+            message "&a&l/huriwake" to player
+            message "   役職を振り分ける" to player
+            message "&a&l/zikan <時間>" to player
+            message "   制限時間を変更する ※ゲーム開始前に設定すること" to player
+            message " " to player
+            message "&n>次のページへ<run command:yakihelp 3>" to player
+            message "&7=====================================================" to player
+
+        if arg-1 is 3:
+            message "&7=====================================================" to player
+            message "&6&l[HELP] &r&7Page 3 of 3" to player
+            message " " to player
+            message "&e-各種コマンド-" to player
+            message " " to player
+            message "&a&l/admin <join/leave>" to player
+            message "   adminに入る/を出る" to player
+            message "&a&l/book" to player
+            message "   本がもらえる" to player
+            message "&a&l/joincount" to player
+            message "   現在の同時接続人数と累計接続人数を表示する" to player
+            message " " to player
+            message "※ここに記載のない、接頭がnattoのコマンドは実行しないこと" to player
+            message " " to player
+            message "&7=====================================================" to player
+
+
+
+
+
+
 command /start:
     permission: skript.admin
     permission message:Admin専用コマンドです。
@@ -11,7 +72,12 @@ command /zikan <number>:
     permission: skript.admin
     permission message:Admin専用コマンドです。
     trigger:
-        set {time} to arg-1
+        if {gameStatus} is 1:
+            message "&l&c>Error ゲーム進行中の時間変更はできません" to player
+            stop
+        else:
+            set {time} to arg-1
+            broadcast "&l&b>焼きおにぎり &r制限時間を%{time}%に設定しました"
 
 command /end:
     permission: skript.admin
